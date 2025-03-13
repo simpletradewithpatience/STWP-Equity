@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Trade Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { width: 320px; max-width: 90%; margin: 20px auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        .input-group { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; }
+        label { flex: 1; text-align: left; font-weight: bold; font-size: 14px; }
+        input, select { flex: 2; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; width: 100px; }
+        button { width: 100%; padding: 10px; background: #007BFF; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 15px; }
+        button:hover { background: #0056b3; }
+        .clear-btn { background: #dc3545; }
+        .clear-btn:hover { background: #a71d2a; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-size: 16px; font-weight: bold; background: #fff; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+	.level-box { padding: 10px; margin: 8px 0; border-radius: 5px; font-size: 18px; }
+        .pivot { background: #007BFF; color: #fff; }
+        .resistance { background: #FF4B4B; color: #fff; }
+        .support { background: #28A745; color: #fff; }
+        .recommendation { font-size: 18px; font-weight: bold; padding: 10px; border-radius: 5px; margin-top: 10px; }
+        .good { background: #28A745; color: white; }
+        .cautious { background: #FFA500; color: white; }
+        .not-recommended { background: #FF4B4B; color: white; }
+        .high-probability { background: #0000FF; color: white; }
+        select[multiple] { height: auto; min-height: 100px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Stock Trade Calculator</h2>
+	<p style="font-size: 12px; color: red; font-weight: bold; text-align: justify; max-width: 90%; margin: 0 auto;">
+    	Disclaimer: This calculator is for educational purposes only and does not constitute financial advice or recommendations. 
+    	Users should do their own research and consult a SEBI-registered advisor before making any trading decisions.
+	The creator of this tool is not responsible for any financial losses incurred based on its use.
+	</p>
+        <div class="input-group"><label>Stock Name:</label><input type="text" id="stock_name"></div>
+        <div class="input-group"><label>Open Price:</label><input type="number" id="open"></div>
+        <div class="input-group"><label>High Price:</label><input type="number" id="high"></div>
+        <div class="input-group"><label>Low Price:</label><input type="number" id="low"></div>
+        <div class="input-group"><label>Close Price:</label><input type="number" id="close"></div>
+        <div class="input-group"><label>RSI:</label><input type="number" id="rsi"></div>
+        <div class="input-group"><label>Today's Volume:</label><input type="number" id="volume"></div>
+        <div class="input-group"><label>Choose SMA Volume:</label>
+            <select id="sma_volume">
+                <option value="5">5 SMA Volume</option>
+                <option value="10">10 SMA Volume</option>
+                <option value="20">20 SMA Volume</option>
+                <option value="50">50 SMA Volume</option>
+            </select>
+        </div>
+        <div class="input-group"><label>Selected SMA Volume:</label><input type="number" id="avg_volume"></div>
+        <div class="input-group">
+            <label>Indicators:</label>
+            <select id="indicators" multiple>
+                <option value="bullish_engulfing">Bullish Engulfing</option>
+                <option value="bullish_piercing">Bullish Piercing</option>
+                <option value="bullish_marubozu">Bullish Marubozu</option>
+                <option value="rsi_breakout">RSI Breakout</option>
+                <option value="bullish_momentum">Bullish Momentum</option>
+                <option value="ema_200_crossover">EMA 200 Crossover</option>
+                <option value="52_week_breakout">52-Week Breakout</option>
+                <option value="macd_crossover">MACD Bullish Crossover</option>
+                <option value="bollinger_band_breakout">Bollinger Band Breakout</option>
+                <option value="supertrend_buy">SuperTrend Buy Signal</option>
+                <option value="swing_trade">Swing Trade</option>
+                <option value="btst">BTST</option>
+                <option value="next_intraday">Next Intraday</option>
+                <option value="short_term_breakout">Short-Term Breakout</option>
+                <option value="strong_bullish_candle">Strong Bullish Candle</option>
+                <option value="volume_breakout">Volume Breakout</option>
+            </select>
+        </div>
+        <button onclick="calculateTrade()">Calculate</button>
+        <button class="clear-btn" onclick="clearForm()">Clear Form</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateTrade() {
+    let high = parseFloat(document.getElementById("high").value);
+    let low = parseFloat(document.getElementById("low").value);
+    let close = parseFloat(document.getElementById("close").value);
+    let volume = parseFloat(document.getElementById("volume").value);
+    let avg_volume = parseFloat(document.getElementById("avg_volume").value);
+    let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(option => option.value);
+
+    // Validate Inputs
+    if (isNaN(high) || isNaN(low) || isNaN(close)) {
+        alert("Please enter valid numeric values for High, Low, and Close prices.");
+        return;
+    }
+    if (isNaN(volume) || isNaN(avg_volume) || avg_volume <= 0) {
+        alert("Please enter valid numeric values for Volume and SMA Volume.");
+        return;
+    }
+
+    // Support & Resistance Calculations
+    let pivot = (high + low + close) / 3;
+    let r1 = (2 * pivot) - low;
+    let r2 = pivot + (high - low);
+    let r3 = high + 2 * (pivot - low);
+    let s1 = (2 * pivot) - high;
+    let s2 = pivot - (high - low);
+    let s3 = low - 2 * (high - pivot);
+
+    let resultText = `
+        <div class="level-box pivot">Pivot Level: ${pivot.toFixed(2)}</div>
+        <div class="level-box resistance">Resistance 1: ${r1.toFixed(2)}</div>
+        <div class="level-box resistance">Resistance 2: ${r2.toFixed(2)}</div>
+        <div class="level-box resistance">Resistance 3: ${r3.toFixed(2)}</div>
+        <div class="level-box support">Support 1: ${s1.toFixed(2)}</div>
+        <div class="level-box support">Support 2: ${s2.toFixed(2)}</div>
+        <div class="level-box support">Support 3: ${s3.toFixed(2)}</div>`;
+
+    // Define strong indicators
+    let strongIndicators = ["52_week_breakout", "rsi_breakout", "macd_crossover", "bollinger_band_breakout", "volume_breakout", "bullish_momentum", "strong_bullish_candle"];
+    let strongMatches = selectedIndicators.filter(indicator => strongIndicators.includes(indicator));
+
+    // Recommendation Logic
+    let recommendationText = "Cautious";
+    let recommendationClass = "cautious";
+
+    if (strongMatches.length >= 5 && volume > 1.5 * avg_volume) {
+        recommendationText = "Good to Trade + Very High Probability";
+        recommendationClass = "high-probability";
+    } else if (strongMatches.length >= 4 && volume > 1.5 * avg_volume) {
+        recommendationText = "Good to Trade + High Probability";
+        recommendationClass = "high-probability";
+    } else if (strongMatches.length >= 2) {
+        recommendationText = "Good to Trade";
+        recommendationClass = "good";
+    } else {
+        recommendationText = "Not Recommended";
+        recommendationClass = "not-recommended";
+    }
+
+    // Display result
+    document.getElementById("result").innerHTML = `
+        ${resultText} 
+        <div class="recommendation ${recommendationClass}">${recommendationText}</div>
+    `;
+}
+
+
+        function clearForm() {
+            document.getElementById("stock_name").value = "";
+            document.getElementById("open").value = "";
+            document.getElementById("high").value = "";
+            document.getElementById("low").value = "";
+            document.getElementById("close").value = "";
+            document.getElementById("rsi").value = "";
+            document.getElementById("volume").value = "";
+            document.getElementById("avg_volume").value = "";
+            document.getElementById("sma_volume").selectedIndex = 0;
+            document.getElementById("indicators").selectedIndex = -1;
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
