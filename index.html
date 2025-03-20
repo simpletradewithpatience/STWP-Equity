@@ -1,164 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stock Trade Calculator</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; margin: 0; padding: 0; }
-        .container { width: 320px; max-width: 90%; margin: 20px auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
-        .input-group { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; }
-        label { flex: 1; text-align: left; font-weight: bold; font-size: 14px; }
-        input, select { flex: 2; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; width: 100px; }
-        button { width: 100%; padding: 10px; background: #007BFF; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; margin-top: 15px; }
-        button:hover { background: #0056b3; }
-        .clear-btn { background: #dc3545; }
-        .clear-btn:hover { background: #a71d2a; }
-        #result { margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-size: 16px; font-weight: bold; background: #fff; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
-	.level-box { padding: 10px; margin: 8px 0; border-radius: 5px; font-size: 18px; }
-        .pivot { background: #007BFF; color: #fff; }
-        .resistance { background: #FF4B4B; color: #fff; }
-        .support { background: #28A745; color: #fff; }
-        .recommendation { font-size: 18px; font-weight: bold; padding: 10px; border-radius: 5px; margin-top: 10px; }
-        .good { background: #28A745; color: white; }
-        .cautious { background: #FFA500; color: white; }
-        .not-recommended { background: #FF4B4B; color: white; }
-        .high-probability { background: #0000FF; color: white; }
-        select[multiple] { height: auto; min-height: 100px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+        }
+        .input-row {
+            display: flex;
+            gap: 12px;
+        }
+        .input-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 91, 187, 0.4);
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #007bff;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .pivot-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        .pivot { background-color: blue; padding: 10px; border-radius: 8px; }
+        .resistance { background-color: red; padding: 10px; border-radius: 8px; }
+        .support { background-color: green; padding: 10px; border-radius: 8px; }
+        .error {
+            border-color: red !important;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6) !important;
+        }
+	 .disclaimer-box { 
+        margin-top: 12px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+        text-align: center;
+        font-size: 20px;
+        color: #555;
+        border-radius: 6px;
+	font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Stock Trade Calculator</h2>
-	<p style="font-size: 12px; color: red; font-weight: bold; text-align: justify; max-width: 90%; margin: 0 auto;">
-    	Disclaimer: This calculator is for educational purposes only and does not constitute financial advice or recommendations. 
-    	Users should do their own research and consult a SEBI-registered advisor before making any trading decisions.
-	The creator of this tool is not responsible for any financial losses incurred based on its use.
-	</p>
-        <div class="input-group"><label>Stock Name:</label><input type="text" id="stock_name"></div>
-        <div class="input-group"><label>Open Price:</label><input type="number" id="open"></div>
-        <div class="input-group"><label>High Price:</label><input type="number" id="high"></div>
-        <div class="input-group"><label>Low Price:</label><input type="number" id="low"></div>
-        <div class="input-group"><label>Close Price:</label><input type="number" id="close"></div>
-        <div class="input-group"><label>RSI:</label><input type="number" id="rsi"></div>
-        <div class="input-group"><label>Today's Volume:</label><input type="number" id="volume"></div>
-        <div class="input-group"><label>Choose SMA Volume:</label>
-            <select id="sma_volume">
-                <option value="5">5 SMA Volume</option>
-                <option value="10">10 SMA Volume</option>
-                <option value="20">20 SMA Volume</option>
-                <option value="50">50 SMA Volume</option>
-            </select>
-        </div>
-        <div class="input-group"><label>Selected SMA Volume:</label><input type="number" id="avg_volume"></div>
+
+<div class="calculator-container">
+    <!-- Row 1: Stock Name & RSI -->
+    <div class="input-row">
         <div class="input-group">
-            <label>Indicators:</label>
-            <select id="indicators" multiple>
-                <option value="bullish_engulfing">Bullish Engulfing</option>
-                <option value="bullish_piercing">Bullish Piercing</option>
-                <option value="bullish_marubozu">Bullish Marubozu</option>
-                <option value="rsi_breakout">RSI Breakout</option>
-                <option value="bullish_momentum">Bullish Momentum</option>
-                <option value="ema_200_crossover">EMA 200 Crossover</option>
-                <option value="52_week_breakout">52-Week Breakout</option>
-                <option value="macd_crossover">MACD Bullish Crossover</option>
-                <option value="bollinger_band_breakout">Bollinger Band Breakout</option>
-                <option value="supertrend_buy">SuperTrend Buy Signal</option>
-                <option value="swing_trade">Swing Trade</option>
-                <option value="btst">BTST</option>
-                <option value="next_intraday">Next Intraday</option>
-                <option value="short_term_breakout">Short-Term Breakout</option>
-                <option value="strong_bullish_candle">Strong Bullish Candle</option>
-		<option value="strong_bullish_candle">Bullish VWAP</option>
-		<option value="strong_bullish_candle">Golden Crossover</option>
-                <option value="volume_breakout">Volume Breakout</option>
-            </select>
+            <label for="stockName">Stock Name</label>
+            <input type="text" id="stockName" placeholder="Enter Stock Name" />
         </div>
-        <button onclick="calculateTrade()">Calculate</button>
-        <button class="clear-btn" onclick="clearForm()">Clear Form</button>
-        <div id="result"></div>
+        <div class="input-group">
+            <label for="rsi">RSI</label>
+            <input type="number" id="rsi" placeholder="Enter RSI" />
+        </div>
     </div>
 
-    <script>
-        function calculateTrade() {
-    let high = parseFloat(document.getElementById("high").value);
-    let low = parseFloat(document.getElementById("low").value);
-    let close = parseFloat(document.getElementById("close").value);
-    let volume = parseFloat(document.getElementById("volume").value);
-    let avg_volume = parseFloat(document.getElementById("avg_volume").value);
-    let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(option => option.value);
+    <!-- Row 2: Open, High, Low, Close -->
+    <div class="input-row">
+        <div class="input-group">
+            <label for="open">Open</label>
+            <input type="number" id="open" placeholder="Enter Open Price" />
+        </div>
+        <div class="input-group">
+            <label for="high">High</label>
+            <input type="number" id="high" placeholder="Enter High Price" />
+        </div>
+        <div class="input-group">
+            <label for="low">Low</label>
+            <input type="number" id="low" placeholder="Enter Low Price" />
+        </div>
+        <div class="input-group">
+            <label for="close">Close</label>
+            <input type="number" id="close" placeholder="Enter Close Price" />
+        </div>
+    </div>
 
-    // Validate Inputs
-    if (isNaN(high) || isNaN(low) || isNaN(close)) {
-        alert("Please enter valid numeric values for High, Low, and Close prices.");
-        return;
-    }
-    if (isNaN(volume) || isNaN(avg_volume) || avg_volume <= 0) {
-        alert("Please enter valid numeric values for Volume and SMA Volume.");
-        return;
-    }
+    <!-- Row 3: Volume & Average Volume -->
+    <div class="input-row">
+        <div class="input-group">
+            <label for="volume">Today's Volume</label>
+            <input type="number" id="volume" placeholder="Enter Volume" />
+        </div>
+        <div class="input-group">
+            <label for="avgVolume">Average Volume</label>
+            <input type="number" id="avgVolume" placeholder="Enter Average Volume" />
+        </div>
+    </div>
 
-    // Support & Resistance Calculations
-    let pivot = (high + low + close) / 3;
-    let r1 = (2 * pivot) - low;
-    let r2 = pivot + (high - low);
-    let r3 = high + 2 * (pivot - low);
-    let s1 = (2 * pivot) - high;
-    let s2 = pivot - (high - low);
-    let s3 = low - 2 * (high - pivot);
+    <!-- Row 4: Multi-Select Indicators Dropdown -->
+    <div class="input-row">
+        <div class="input-group">
+            <label for="indicators">Select Indicators</label>
+            <select id="indicators" multiple>
+                <optgroup label="Strongest Indicators">
+                    <option value="52_week_breakout">52-Week Breakout</option>
+                    <option value="bullish_engulfing">Bullish Engulfing</option>
+                    <option value="rsi_breakout">RSI Breakout</option>
+                    <option value="macd_bullish_crossover">MACD Bullish Crossover</option>
+                    <option value="supertrend_buy">SuperTrend Buy Signal</option>
+                    <option value="golden_crossover">Golden Crossover</option>
+                    <option value="volume_breakout">Volume Breakout</option>
+                </optgroup>
+                <optgroup label="Moderately Strong Indicators">
+                    <option value="bullish_momentum">Bullish Momentum</option>
+                    <option value="bullish_marubozu">Bullish Marubozu</option>
+                    <option value="ema_200_crossover">EMA 200 Crossover</option>
+                    <option value="bollinger_band">Bollinger Band Breakout</option>
+                    <option value="swing_trade">Swing Trade</option>
+                    <option value="range_breakout">Range Breakout</option>
+                    <option value="strong_bullish_candle">Strong Bullish Candle</option>
+                </optgroup>
+                <optgroup label="Supporting Indicators">
+                    <option value="bullish_piercing">Bullish Piercing</option>
+                    <option value="btst">BTST</option>
+                    <option value="next_intraday">Next Intraday</option>
+                    <option value="short_term_breakout">Short-Term Breakout</option>
+                    <option value="bullish_vwap">Bullish VWAP</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
 
-    let resultText = `
-        <div class="level-box pivot">Pivot Level: ${pivot.toFixed(2)}</div>
-        <div class="level-box resistance">Resistance 1: ${r1.toFixed(2)}</div>
-        <div class="level-box resistance">Resistance 2: ${r2.toFixed(2)}</div>
-        <div class="level-box resistance">Resistance 3: ${r3.toFixed(2)}</div>
-        <div class="level-box support">Support 1: ${s1.toFixed(2)}</div>
-        <div class="level-box support">Support 2: ${s2.toFixed(2)}</div>
-        <div class="level-box support">Support 3: ${s3.toFixed(2)}</div>`;
+<div class="input-row">
+        <button id="validate">Validate</button>
+        <button id="calculate">Calculate</button>
+        <button id="reset">Reset</button>
+    </div>
 
-    // Define strong indicators
-    let strongIndicators = ["52_week_breakout", "rsi_breakout", "macd_crossover", "bollinger_band_breakout", "volume_breakout", "bullish_momentum", "strong_bullish_candle"];
-    let strongMatches = selectedIndicators.filter(indicator => strongIndicators.includes(indicator));
+    <div class="pivot-row">
+        <div class="resistance" id="r3">R3</div>
+        <div class="resistance" id="r2">R2</div>
+        <div class="resistance" id="r1">R1</div>
+        <div class="pivot" id="pivot">Pivot</div>
+        <div class="support" id="s1">S1</div>
+        <div class="support" id="s2">S2</div>
+        <div class="support" id="s3">S3</div>
+    </div>
+<!-- Row 7: Technical Outlook Button -->
+    <div class="input-row">
+        <button id="technicalOutlook">Technical Outlook</button>
+    </div>
+</div>
+<!-- Row 8: Trade Recommendation Output (Now Inside the Calculator) -->
+    <div id="tradeRecommendation" 
+         style="margin-top: 10px; padding: 10px; font-weight: bold; text-align: center;">
+    </div>
+</div>
+<!-- Row 9: Disclaimer (Now Inside the Calculator) -->
+    <div class="disclaimer-box">
+        <small>
+            <strong>Disclaimer:</strong> This calculator is for educational purposes only and does not constitute financial advice or recommendations. 
+    	    Users should do their own research and consult a <strong>SEBI-registered advisor</strong> before making any trading decisions. 
+	    The creator of this tool is <strong>not responsible</strong> for any financial losses incurred based on its use.
+        </small>
+    </div>
+</div> <!-- Closing .calculator-container -->
+<script>
+    document.getElementById("technicalOutlook").addEventListener("click", function() {
+        let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(opt => opt.value);
+        let strongIndicators = selectedIndicators.length;
+        let volume = parseFloat(document.getElementById("volume").value);
+        let avgVolume = parseFloat(document.getElementById("avgVolume").value);
+        let highVolume = volume > 1.5 * avgVolume;
+	let rsi = parseFloat(document.getElementById("rsi").value);
 
-    // Recommendation Logic
-    let recommendationText = "Cautious";
-    let recommendationClass = "cautious";
+        let recommendation = "";
+        let justification = "";
+	let rsiMessage = "";
 
-    if (strongMatches.length >= 5 && volume > 1.5 * avg_volume) {
-        recommendationText = "Good to Trade + Very High Probability";
-        recommendationClass = "high-probability";
-    } else if (strongMatches.length >= 4 && volume > 1.5 * avg_volume) {
-        recommendationText = "Good to Trade + High Probability";
-        recommendationClass = "high-probability";
-    } else if (strongMatches.length >= 2) {
-        recommendationText = "Good to Trade";
-        recommendationClass = "good";
-    } else {
-        recommendationText = "Not Recommended";
-        recommendationClass = "not-recommended";
-    }
+	// RSI insights
+    	if (rsi > 60) {
+            rsiMessage = "RSI indicates strong bullish momentum.";
+    	} else if (rsi >= 40 && rsi <= 60) {
+            rsiMessage = "RSI suggests a neutral trend.";
+    	} else {
+            rsiMessage = "RSI is below 40, indicating bearish pressure.";
+    	}
 
-    // Display result
-    document.getElementById("result").innerHTML = `
-        ${resultText} 
-        <div class="recommendation ${recommendationClass}">${recommendationText}</div>
-    `;
-}
-
-
-        function clearForm() {
-            document.getElementById("stock_name").value = "";
-            document.getElementById("open").value = "";
-            document.getElementById("high").value = "";
-            document.getElementById("low").value = "";
-            document.getElementById("close").value = "";
-            document.getElementById("rsi").value = "";
-            document.getElementById("volume").value = "";
-            document.getElementById("avg_volume").value = "";
-            document.getElementById("sma_volume").selectedIndex = 0;
-            document.getElementById("indicators").selectedIndex = -1;
-            document.getElementById("result").innerHTML = "";
+        if (strongIndicators >= 5 && highVolume) {
+            recommendation = "✅ Good to Trade + Very High Probability";
+            justification = "Strong confluence of signals + institutional volume = High conviction trade";
+        } else if (strongIndicators >= 4 && highVolume) {
+            recommendation = "✅ Good to Trade + High Probability";
+            justification = "Sufficient technical strength + institutional activity = Likely follow-through";
+        } else if (strongIndicators === 3) {
+            recommendation = "✅ Good to Trade";
+            justification = "Technical strength alone = Favorable trade setup";
+        } else {
+            recommendation = "❌ Not Recommended";
+            justification = "Lack of confirmation + low institutional support = Weak signal";
         }
-    </script>
+
+        let output = `<div style="background-color: ${recommendation.includes('Not') ? '#ffcccc' : '#ccffcc'}; 
+                      padding: 10px; border-radius: 8px;">
+                        <strong>${recommendation}</strong><br>
+                        <span style="font-size: 20;">${justification}</span><br>
+                        <span style="font-size: 16px; color: #007bff;">${rsiMessage}</span>
+                      </div>`;
+
+        document.getElementById("tradeRecommendation").innerHTML = output;
+    });
+</script>
+
+<script>
+    document.getElementById("validate").addEventListener("click", function() {
+        let isValid = true;
+        document.querySelectorAll("input").forEach(input => {
+            if (!input.value) {
+                input.classList.add("error");
+                isValid = false;
+            } else {
+                input.classList.remove("error");
+            }
+        });
+        if (!isValid) return;
+        
+        let volume = parseFloat(document.getElementById("volume").value);
+        let avgVolume = parseFloat(document.getElementById("avgVolume").value);
+        if (volume > 1.5 * avgVolume) {
+            alert("High Volume Activity Detected");
+        } else if (volume < 0.5 * avgVolume) {
+            alert("Low Volume Activity Detected");
+        }
+    });
+
+    document.getElementById("calculate").addEventListener("click", function() {
+        let high = parseFloat(document.getElementById("high").value);
+        let low = parseFloat(document.getElementById("low").value);
+        let close = parseFloat(document.getElementById("close").value);
+        let pivot = (high + low + close) / 3;
+        let r1 = 2 * pivot - low;
+        let r2 = pivot + (high - low);
+        let r3 = high + 2 * (pivot - low);
+        let s1 = 2 * pivot - high;
+        let s2 = pivot - (high - low);
+        let s3 = low - 2 * (high - pivot);
+        
+        document.getElementById("pivot").innerText = pivot.toFixed(2);
+        document.getElementById("r1").innerText = r1.toFixed(2);
+        document.getElementById("r2").innerText = r2.toFixed(2);
+        document.getElementById("r3").innerText = r3.toFixed(2);
+        document.getElementById("s1").innerText = s1.toFixed(2);
+        document.getElementById("s2").innerText = s2.toFixed(2);
+        document.getElementById("s3").innerText = s3.toFixed(2);
+    });
+
+    document.getElementById("reset").addEventListener("click", function() {
+        document.querySelectorAll("input").forEach(input => input.value = "");
+        document.getElementById("indicators").selectedIndex = -1; // Clear selection
+        document.getElementById("tradeRecommendation").innerHTML = ""; // Clear trade 	recommendation
+
+
+	// Reset Resistance, Pivot, and Support levels
+        document.getElementById("pivot").innerText = "Pivot";
+        document.getElementById("r1").innerText = "R1";
+        document.getElementById("r2").innerText = "R2";
+        document.getElementById("r3").innerText = "R3";
+        document.getElementById("s1").innerText = "S1";
+        document.getElementById("s2").innerText = "S2";
+        document.getElementById("s3").innerText = "S3";
+
+    });
+</script>
 </body>
 </html>
