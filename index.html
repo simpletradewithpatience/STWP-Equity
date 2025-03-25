@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,127 +12,181 @@
             background-color: #f4f4f9;
         }
         .calculator-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-width: 600px;
+            display: grid;
+            grid-template-columns: 1fr; /* Single column layout */
+            gap: 12px; /* Increased gap between rows */
+            max-width: 750px;
             margin: auto;
-            padding: 20px;
+            padding: 5px;
             background-color: #ffffff;
             border: 2px solid #007bff;
             border-radius: 12px;
             box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
         }
+
         .input-row {
-            display: flex;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+            gap: 10px; /* Spacing between fields */
         }
+
         .input-group {
-            flex: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
+
         input, select, button {
             width: 100%;
-            padding: 10px;
+            padding: 5px; /* Increased padding for better spacing */
             border: 2px solid #007bff;
             border-radius: 8px;
-            box-sizing: border-box;
             font-size: 16px;
+            box-sizing: border-box;
             transition: border-color 0.3s ease;
             outline: none;
         }
+
         input:focus, select:focus {
             border-color: #0056b3;
             box-shadow: 0 0 8px rgba(0, 91, 187, 0.4);
         }
+
         label {
             font-weight: bold;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: #007bff;
         }
-        button {
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
+
+        .button-row {
+    display: flex;
+    justify-content: space-between; /* Evenly spaces buttons */
+    gap: 10px; /* Adds a small gap between buttons */
+    flex-wrap: nowrap; /* Prevents buttons from breaking into a new line */
+}
+
+.button-row button {
+    flex: 1; /* Makes all buttons take equal width */
+    padding: 5px; /* Adjust padding for better spacing */
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.button-row button:hover {
+    background-color: #0056b3;
+}
+
         .pivot-row {
             display: flex;
-            justify-content: center;
-            gap: 12px;
+            justify-content: space-around;
+            gap: 5px;
             font-weight: bold;
             color: white;
         }
+
         .pivot { background-color: blue; padding: 10px; border-radius: 8px; }
         .resistance { background-color: red; padding: 10px; border-radius: 8px; }
         .support { background-color: green; padding: 10px; border-radius: 8px; }
+
         .error {
             border-color: red !important;
             box-shadow: 0 0 8px rgba(255, 0, 0, 0.6) !important;
         }
-	 .disclaimer-box { 
-        margin-top: 12px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        background-color: #f8f9fa;
-        text-align: center;
-        font-size: 20px;
-        color: #555;
-        border-radius: 6px;
-	font-weight: bold;
+
+        .disclaimer-box {
+            margin-top: 30px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        /* Output area for position size and trade recommendation */
+        #positionSizeOutput, #tradeRecommendation {
+            margin-top: 20px;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #f0f8ff;
         }
     </style>
 </head>
 <body>
 
 <div class="calculator-container">
-    <!-- Row 1: Stock Name & RSI -->
+    <!-- First Row: Stock Name & RSI -->
     <div class="input-row">
         <div class="input-group">
             <label for="stockName">Stock Name</label>
-            <input type="text" id="stockName" placeholder="Enter Stock Name" />
+            <input type="text" id="stockName" placeholder="Enter Stock Name">
         </div>
         <div class="input-group">
             <label for="rsi">RSI</label>
-            <input type="number" id="rsi" placeholder="Enter RSI" />
+            <input type="number" id="rsi" placeholder="Enter RSI">
         </div>
     </div>
 
-    <!-- Row 2: Open, High, Low, Close -->
-    <div class="input-row">
-        <div class="input-group">
-            <label for="open">Open</label>
-            <input type="number" id="open" placeholder="Enter Open Price" />
-        </div>
-        <div class="input-group">
-            <label for="high">High</label>
-            <input type="number" id="high" placeholder="Enter High Price" />
-        </div>
-        <div class="input-group">
-            <label for="low">Low</label>
-            <input type="number" id="low" placeholder="Enter Low Price" />
-        </div>
-        <div class="input-group">
-            <label for="close">Close</label>
-            <input type="number" id="close" placeholder="Enter Close Price" />
-        </div>
+    <!-- Second Row: Open, High, Low, Close -->
+<div class="input-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+    <div class="input-group">
+        <label for="open">Open</label>
+        <input type="number" id="open" placeholder="Open Price" step="0.01" min="0" required>
     </div>
+    <div class="input-group">
+        <label for="high">High</label>
+        <input type="number" id="high" placeholder="High Price" step="0.01" min="0" required>
+    </div>
+    <div class="input-group">
+        <label for="low">Low</label>
+        <input type="number" id="low" placeholder="Low Price" step="0.01" min="0" required>
+    </div>
+    <div class="input-group">
+        <label for="close">Close</label>
+        <input type="number" id="close" placeholder="Close Price" step="0.01" min="0" required>
+    </div>
+</div>
 
-    <!-- Row 3: Volume & Average Volume -->
+    <!-- Third Row: Today's Volume & Average Volume -->
     <div class="input-row">
         <div class="input-group">
             <label for="volume">Today's Volume</label>
-            <input type="number" id="volume" placeholder="Enter Volume" />
+            <input type="number" id="volume" placeholder="Enter Volume">
         </div>
         <div class="input-group">
             <label for="avgVolume">Average Volume</label>
-            <input type="number" id="avgVolume" placeholder="Enter Average Volume" />
+            <input type="number" id="avgVolume" placeholder="Enter Average Volume">
         </div>
     </div>
+
+<!-- Fourth Row: Inputs for Position Sizing -->
+<div class="input-row">
+    <div class="input-group">
+        <label for="capital">Trading Capital</label>
+        <input type="number" id="capital" placeholder="Enter Trading Capital" step="0.01" min="0" required>
+    </div>
+    <div class="input-group">
+        <label for="riskPercent">Risk Per Trade (%)</label>
+        <input type="number" id="riskPercent" placeholder="Enter Risk Percentage" step="0.01" min="0" required>
+    </div>
+    <div class="input-group">
+        <label for="entryPrice">Entry Price</label>
+        <input type="number" id="entryPrice" placeholder="Enter Entry Price" step="0.01" min="0" required>
+    </div>
+    <div class="input-group">
+        <label for="stopLoss">Stop-Loss Price</label>
+        <input type="number" id="stopLoss" placeholder="Enter Stop-Loss Price" step="0.01" min="0" required>
+    </div>
+</div>
 
     <!-- Row 4: Multi-Select Indicators Dropdown -->
     <div class="input-row">
@@ -167,12 +222,16 @@
         </div>
     </div>
 
-<div class="input-row">
-        <button id="validate">Validate</button>
-        <button id="calculate">Calculate</button>
-        <button id="reset">Reset</button>
-    </div>
+    <!-- Fifth Row: All Buttons in a Single Row -->
+<div class="button-row" style="display: flex; gap: 10px; justify-content: space-between;">
+    <button id="validate" style="flex: 1;">Validate</button>
+    <button id="calculate" style="flex: 1;">Calculate</button>
+    <button id="calculatePositionSize" style="flex: 1;">Position Size</button>
+    <button id="technicalOutlook" style="flex: 1;">Technical Outlook</button>
+    <button id="reset" style="flex: 1;">Reset</button>
+</div>
 
+    <!-- Sixth Row: Pivot Levels Output -->
     <div class="pivot-row">
         <div class="resistance" id="r3">R3</div>
         <div class="resistance" id="r2">R2</div>
@@ -182,131 +241,185 @@
         <div class="support" id="s2">S2</div>
         <div class="support" id="s3">S3</div>
     </div>
-<!-- Row 7: Technical Outlook Button -->
-    <div class="input-row">
-        <button id="technicalOutlook">Technical Outlook</button>
-    </div>
-</div>
-<!-- Row 8: Trade Recommendation Output (Now Inside the Calculator) -->
-    <div id="tradeRecommendation" 
-         style="margin-top: 10px; padding: 10px; font-weight: bold; text-align: center;">
-    </div>
-</div>
-<!-- Row 9: Disclaimer (Now Inside the Calculator) -->
+
+    <!-- Seventh Row: Trade Recommendation & Position Size Output -->
+    <div id="positionSizeOutput"></div>
+    <div id="tradeRecommendation"></div>
+
+    <!-- Eighth Row: Disclaimer -->
     <div class="disclaimer-box">
         <small>
             <strong>Disclaimer:</strong> This calculator is for educational purposes only and does not constitute financial advice or recommendations. 
-    	    Users should do their own research and consult a <strong>SEBI-registered advisor</strong> before making any trading decisions. 
-	    The creator of this tool is <strong>not responsible</strong> for any financial losses incurred based on its use.
+            Users should do their own research and consult a <strong>SEBI-registered advisor</strong> before making any trading decisions. 
+            The creator of this tool is <strong>not responsible</strong> for any financial losses incurred based on its use.
         </small>
     </div>
-</div> <!-- Closing .calculator-container -->
+</div>
 <script>
     document.getElementById("technicalOutlook").addEventListener("click", function() {
-        let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(opt => opt.value);
-        let strongIndicators = selectedIndicators.length;
-        let volume = parseFloat(document.getElementById("volume").value);
-        let avgVolume = parseFloat(document.getElementById("avgVolume").value);
-        let highVolume = volume > 1.5 * avgVolume;
-	let rsi = parseFloat(document.getElementById("rsi").value);
+    let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(opt => opt.value);
+    let strongIndicators = selectedIndicators.length;
+    let volume = parseFloat(document.getElementById("volume").value) || 0;
+    let avgVolume = parseFloat(document.getElementById("avgVolume").value) || 1;
+    let highVolume = volume > 1.5 * avgVolume;
+    let rsi = parseFloat(document.getElementById("rsi").value) || 0;
 
-        let recommendation = "";
-        let justification = "";
-	let rsiMessage = "";
+    let recommendation = "";
+    let justification = "";
+    let rsiMessage = "";
 
-	// RSI insights
-    	if (rsi > 60) {
-            rsiMessage = "RSI indicates strong bullish momentum.";
-    	} else if (rsi >= 40 && rsi <= 60) {
-            rsiMessage = "RSI suggests a neutral trend.";
-    	} else {
-            rsiMessage = "RSI is below 40, indicating bearish pressure.";
-    	}
+    // RSI insights
+    if (rsi > 60) {
+        rsiMessage = "RSI indicates strong bullish momentum.";
+    } else if (rsi >= 40 && rsi <= 60) {
+        rsiMessage = "RSI suggests a neutral trend.";
+    } else {
+        rsiMessage = "RSI is below 40, indicating bearish pressure.";
+    }
 
-        if (strongIndicators >= 5 && highVolume) {
-            recommendation = "✅ Good to Trade + Very High Probability";
-            justification = "Strong confluence of signals + institutional volume = High conviction trade";
-        } else if (strongIndicators >= 4 && highVolume) {
-            recommendation = "✅ Good to Trade + High Probability";
-            justification = "Sufficient technical strength + institutional activity = Likely follow-through";
-        } else if (strongIndicators === 3) {
-            recommendation = "✅ Good to Trade";
-            justification = "Technical strength alone = Favorable trade setup";
+    if (strongIndicators >= 5 && highVolume) {
+        recommendation = "✅ Good to Trade + Very High Probability";
+        justification = "Strong confluence of signals + institutional volume = High conviction trade";
+    } else if (strongIndicators >= 4 && highVolume) {
+        recommendation = "✅ Good to Trade + High Probability";
+        justification = "Sufficient technical strength + institutional activity = Likely follow-through";
+    } else if (strongIndicators === 3) {
+        recommendation = "✅ Good to Trade";
+        justification = "Technical strength alone = Favorable trade setup";
+    } else {
+        recommendation = "❌ Not Recommended";
+        justification = "Lack of confirmation + low institutional support = Weak signal";
+    }
+
+    let output = `<div style="background-color: ${recommendation.includes('Not') ? '#ffcccc' : '#ccffcc'}; 
+                  padding: 10px; border-radius: 8px;">
+                    <strong>${recommendation}</strong><br>
+                    <span style="font-size: 20px;">${justification}</span><br>
+                    <span style="font-size: 16px; color: #007bff;">${rsiMessage}</span>
+                  </div>`;
+
+    document.getElementById("tradeRecommendation").innerHTML = output;
+});
+
+document.getElementById("validate").addEventListener("click", function() {
+    let isValid = true;
+    document.querySelectorAll("input").forEach(input => {
+        if (!input.value.trim()) {
+            input.classList.add("error");
+            isValid = false;
         } else {
-            recommendation = "❌ Not Recommended";
-            justification = "Lack of confirmation + low institutional support = Weak signal";
-        }
-
-        let output = `<div style="background-color: ${recommendation.includes('Not') ? '#ffcccc' : '#ccffcc'}; 
-                      padding: 10px; border-radius: 8px;">
-                        <strong>${recommendation}</strong><br>
-                        <span style="font-size: 20;">${justification}</span><br>
-                        <span style="font-size: 16px; color: #007bff;">${rsiMessage}</span>
-                      </div>`;
-
-        document.getElementById("tradeRecommendation").innerHTML = output;
-    });
-</script>
-
-<script>
-    document.getElementById("validate").addEventListener("click", function() {
-        let isValid = true;
-        document.querySelectorAll("input").forEach(input => {
-            if (!input.value) {
-                input.classList.add("error");
-                isValid = false;
-            } else {
-                input.classList.remove("error");
-            }
-        });
-        if (!isValid) return;
-        
-        let volume = parseFloat(document.getElementById("volume").value);
-        let avgVolume = parseFloat(document.getElementById("avgVolume").value);
-        if (volume > 1.5 * avgVolume) {
-            alert("High Volume Activity Detected");
-        } else if (volume < 0.5 * avgVolume) {
-            alert("Low Volume Activity Detected");
+            input.classList.remove("error");
         }
     });
 
-    document.getElementById("calculate").addEventListener("click", function() {
-        let high = parseFloat(document.getElementById("high").value);
-        let low = parseFloat(document.getElementById("low").value);
-        let close = parseFloat(document.getElementById("close").value);
-        let pivot = (high + low + close) / 3;
-        let r1 = 2 * pivot - low;
-        let r2 = pivot + (high - low);
-        let r3 = high + 2 * (pivot - low);
-        let s1 = 2 * pivot - high;
-        let s2 = pivot - (high - low);
-        let s3 = low - 2 * (high - pivot);
-        
-        document.getElementById("pivot").innerText = pivot.toFixed(2);
-        document.getElementById("r1").innerText = r1.toFixed(2);
-        document.getElementById("r2").innerText = r2.toFixed(2);
-        document.getElementById("r3").innerText = r3.toFixed(2);
-        document.getElementById("s1").innerText = s1.toFixed(2);
-        document.getElementById("s2").innerText = s2.toFixed(2);
-        document.getElementById("s3").innerText = s3.toFixed(2);
-    });
+    if (!isValid) {
+        alert("Please fill in all fields correctly.");
+        return;
+    }
 
-    document.getElementById("reset").addEventListener("click", function() {
-        document.querySelectorAll("input").forEach(input => input.value = "");
-        document.getElementById("indicators").selectedIndex = -1; // Clear selection
-        document.getElementById("tradeRecommendation").innerHTML = ""; // Clear trade 	recommendation
+    let volume = parseFloat(document.getElementById("volume").value);
+    let avgVolume = parseFloat(document.getElementById("avgVolume").value);
 
+    if (volume > 1.5 * avgVolume) {
+        alert("High Volume Activity Detected");
+    } else if (volume < 0.5 * avgVolume) {
+        alert("Low Volume Activity Detected");
+    }
+});
 
-	// Reset Resistance, Pivot, and Support levels
-        document.getElementById("pivot").innerText = "Pivot";
-        document.getElementById("r1").innerText = "R1";
-        document.getElementById("r2").innerText = "R2";
-        document.getElementById("r3").innerText = "R3";
-        document.getElementById("s1").innerText = "S1";
-        document.getElementById("s2").innerText = "S2";
-        document.getElementById("s3").innerText = "S3";
+document.getElementById("calculate").addEventListener("click", function() {
+    let high = parseFloat(document.getElementById("high").value) || 0;
+    let low = parseFloat(document.getElementById("low").value) || 0;
+    let close = parseFloat(document.getElementById("close").value) || 0;
+    let pivot = (high + low + close) / 3;
+    let r1 = 2 * pivot - low;
+    let r2 = pivot + (high - low);
+    let r3 = high + 2 * (pivot - low);
+    let s1 = 2 * pivot - high;
+    let s2 = pivot - (high - low);
+    let s3 = low - 2 * (high - pivot);
 
-    });
+    document.getElementById("pivot").innerText = pivot.toFixed(2);
+    document.getElementById("r1").innerText = r1.toFixed(2);
+    document.getElementById("r2").innerText = r2.toFixed(2);
+    document.getElementById("r3").innerText = r3.toFixed(2);
+    document.getElementById("s1").innerText = s1.toFixed(2);
+    document.getElementById("s2").innerText = s2.toFixed(2);
+    document.getElementById("s3").innerText = s3.toFixed(2);
+});
+
+document.getElementById("calculatePositionSize").addEventListener("click", function() {
+    let capital = parseFloat(document.getElementById("capital").value);
+    let riskPercent = parseFloat(document.getElementById("riskPercent").value);
+    let entryPrice = parseFloat(document.getElementById("entryPrice").value);
+    let stopLoss = parseFloat(document.getElementById("stopLoss").value);
+
+    if (isNaN(capital) || capital <= 0) {
+        alert("Please enter a valid trading capital.");
+        return;
+    }
+
+    if (isNaN(riskPercent) || riskPercent <= 0) {
+        alert("Risk percentage should be greater than 0.");
+        return;
+    }
+
+    if (isNaN(entryPrice) || entryPrice <= 0) {
+        alert("Please enter a valid entry price.");
+        return;
+    }
+
+    if (isNaN(stopLoss) || stopLoss <= 0) {
+        alert("Please enter a valid stop-loss price.");
+        return;
+    }
+
+    let tradeDirection = entryPrice > stopLoss ? "Long" : "Short"; // Determines trade type
+
+    if ((tradeDirection === "Long" && stopLoss >= entryPrice) || 
+        (tradeDirection === "Short" && stopLoss <= entryPrice)) {
+        alert("Invalid Stop-Loss placement. Ensure it's below the entry for longs and above for shorts.");
+        return;
+    }
+
+    let riskAmount = (riskPercent / 100) * capital;
+    let perShareRisk = Math.abs(entryPrice - stopLoss);
+
+    if (perShareRisk === 0) {
+        alert("Stop-Loss and Entry Price should not be the same.");
+        return;
+    }
+
+    let positionSize = Math.floor(riskAmount / perShareRisk);
+
+    if (positionSize < 1) {
+        alert("Position size is too small. Consider increasing your capital or adjusting stop-loss.");
+        return;
+    }
+
+    document.getElementById("positionSizeOutput").innerHTML = `
+        <div style="background-color: #ccffcc; padding: 10px; border-radius: 8px;">
+            <strong>Optimal Position Size:</strong> ${positionSize} shares <br>
+            <strong>Trade Type:</strong> ${tradeDirection}
+        </div>`;
+});
+
+document.getElementById("reset").addEventListener("click", function() {
+    document.querySelectorAll("input").forEach(input => input.value = "");
+    document.querySelectorAll("select").forEach(select => select.selectedIndex = -1);
+    document.getElementById("tradeRecommendation").innerHTML = ""; 
+    document.getElementById("positionSizeOutput").innerHTML = ""; 
+
+    // Reset Resistance, Pivot, and Support levels
+    document.getElementById("pivot").innerText = "Pivot";
+    document.getElementById("r1").innerText = "R1";
+    document.getElementById("r2").innerText = "R2";
+    document.getElementById("r3").innerText = "R3";
+    document.getElementById("s1").innerText = "S1";
+    document.getElementById("s2").innerText = "S2";
+    document.getElementById("s3").innerText = "S3";
+});
+
 </script>
 </body>
 </html>
