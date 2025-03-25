@@ -13,21 +13,23 @@
         }
         .calculator-container {
             display: grid;
-            grid-template-columns: 1fr; /* Single column layout */
-            gap: 12px; /* Increased gap between rows */
-            max-width: 750px;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            max-width: 600px;
             margin: auto;
-            padding: 5px;
+            padding: 10px;
             background-color: #ffffff;
             border: 2px solid #007bff;
             border-radius: 12px;
             box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .input-row {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns with equal width */
-            gap: 10px; /* Spacing between fields */
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
         .input-group {
@@ -38,9 +40,9 @@
 
         input, select, button {
             width: 100%;
-            padding: 5px; /* Increased padding for better spacing */
+            padding: 5px;
             border: 2px solid #007bff;
-            border-radius: 8px;
+            border-radius: 4px;
             font-size: 16px;
             box-sizing: border-box;
             transition: border-color 0.3s ease;
@@ -59,27 +61,27 @@
         }
 
         .button-row {
-    display: flex;
-    justify-content: space-between; /* Evenly spaces buttons */
-    gap: 10px; /* Adds a small gap between buttons */
-    flex-wrap: nowrap; /* Prevents buttons from breaking into a new line */
-}
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
 
-.button-row button {
-    flex: 1; /* Makes all buttons take equal width */
-    padding: 5px; /* Adjust padding for better spacing */
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: 2px solid #007bff;
-    transition: background-color 0.3s ease;
-}
+        .button-row button {
+            flex: 1;
+            padding: 2px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: 2px solid #007bff;
+            transition: background-color 0.3s ease;
+        }
 
-.button-row button:hover {
-    background-color: #0056b3;
-}
+        .button-row button:hover {
+            background-color: #0056b3;
+        }
 
         .pivot-row {
             display: flex;
@@ -87,6 +89,7 @@
             gap: 5px;
             font-weight: bold;
             color: white;
+            flex-wrap: wrap;
         }
 
         .pivot { background-color: blue; padding: 10px; border-radius: 8px; }
@@ -110,7 +113,6 @@
             font-weight: bold;
         }
 
-        /* Output area for position size and trade recommendation */
         #positionSizeOutput, #tradeRecommendation {
             margin-top: 20px;
             padding: 20px;
@@ -119,12 +121,41 @@
             border-radius: 8px;
             background-color: #f0f8ff;
         }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .input-row {
+                grid-template-columns: 1fr; /* Stacks inputs vertically on smaller screens */
+            }
+
+            .button-row {
+                flex-direction: column; /* Stacks buttons vertically */
+            }
+
+            .pivot-row {
+                flex-direction: column; /* Stacks pivot values vertically */
+                text-align: center;
+            }
+
+            .calculator-container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            input, select, button {
+                font-size: 14px; /* Adjust input font size for smaller screens */
+                padding: 8px; /* Reduce padding for smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="calculator-container">
-    <!-- First Row: Stock Name & RSI -->
     <div class="input-row">
         <div class="input-group">
             <label for="stockName">Stock Name</label>
@@ -136,27 +167,25 @@
         </div>
     </div>
 
-    <!-- Second Row: Open, High, Low, Close -->
-<div class="input-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-    <div class="input-group">
-        <label for="open">Open</label>
-        <input type="number" id="open" placeholder="Open Price" step="0.01" min="0" required>
+    <div class="input-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+        <div class="input-group">
+            <label for="open">Open</label>
+            <input type="number" id="open" placeholder="Open Price" step="0.01" min="0" required>
+        </div>
+        <div class="input-group">
+            <label for="high">High</label>
+            <input type="number" id="high" placeholder="High Price" step="0.01" min="0" required>
+        </div>
+        <div class="input-group">
+            <label for="low">Low</label>
+            <input type="number" id="low" placeholder="Low Price" step="0.01" min="0" required>
+        </div>
+        <div class="input-group">
+            <label for="close">Close</label>
+            <input type="number" id="close" placeholder="Close Price" step="0.01" min="0" required>
+        </div>
     </div>
-    <div class="input-group">
-        <label for="high">High</label>
-        <input type="number" id="high" placeholder="High Price" step="0.01" min="0" required>
-    </div>
-    <div class="input-group">
-        <label for="low">Low</label>
-        <input type="number" id="low" placeholder="Low Price" step="0.01" min="0" required>
-    </div>
-    <div class="input-group">
-        <label for="close">Close</label>
-        <input type="number" id="close" placeholder="Close Price" step="0.01" min="0" required>
-    </div>
-</div>
 
-    <!-- Third Row: Today's Volume & Average Volume -->
     <div class="input-row">
         <div class="input-group">
             <label for="volume">Today's Volume</label>
@@ -168,25 +197,24 @@
         </div>
     </div>
 
-<!-- Fourth Row: Inputs for Position Sizing -->
-<div class="input-row">
-    <div class="input-group">
-        <label for="capital">Trading Capital</label>
-        <input type="number" id="capital" placeholder="Enter Trading Capital" step="0.01" min="0" required>
+    <div class="input-row">
+        <div class="input-group">
+            <label for="capital">Trading Capital</label>
+            <input type="number" id="capital" placeholder="Enter Trading Capital" step="0.01" min="0" required>
+        </div>
+        <div class="input-group">
+            <label for="riskPercent">Risk Per Trade (%)</label>
+            <input type="number" id="riskPercent" placeholder="Enter Risk Percentage" step="0.01" min="0" required>
+        </div>
+        <div class="input-group">
+            <label for="entryPrice">Entry Price</label>
+            <input type="number" id="entryPrice" placeholder="Enter Entry Price" step="0.01" min="0" required>
+        </div>
+        <div class="input-group">
+            <label for="stopLoss">Stop-Loss Price</label>
+            <input type="number" id="stopLoss" placeholder="Enter Stop-Loss Price" step="0.01" min="0" required>
+        </div>
     </div>
-    <div class="input-group">
-        <label for="riskPercent">Risk Per Trade (%)</label>
-        <input type="number" id="riskPercent" placeholder="Enter Risk Percentage" step="0.01" min="0" required>
-    </div>
-    <div class="input-group">
-        <label for="entryPrice">Entry Price</label>
-        <input type="number" id="entryPrice" placeholder="Enter Entry Price" step="0.01" min="0" required>
-    </div>
-    <div class="input-group">
-        <label for="stopLoss">Stop-Loss Price</label>
-        <input type="number" id="stopLoss" placeholder="Enter Stop-Loss Price" step="0.01" min="0" required>
-    </div>
-</div>
 
     <!-- Row 4: Multi-Select Indicators Dropdown -->
     <div class="input-row">
