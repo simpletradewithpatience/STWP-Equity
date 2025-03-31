@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -246,6 +247,23 @@
                     <option value="next_intraday">Next Intraday</option>
                     <option value="short_term_breakout">Short-Term Breakout</option>
                     <option value="bullish_vwap">Bullish VWAP</option>
+		</optgroup>
+            	<optgroup label="Bearish Indicators">
+                option value="ema_200_death_cross">EMA 200 Death Cross</option>
+                <option value="ema_200_crossunder">EMA 200 Crossunder</option>
+                <option value="bearish_supertrend">Bearish SuperTrend</option>
+                <option value="rsi_breakdown">RSI Breakdown</option>
+                <option value="macd_bearish_crossover">MACD Bearish Crossover</option>
+                <option value="strong_bearish_candle">Strong Bearish Candle</option>
+                <option value="possible_breakdown">Possible Breakdown</option>
+                <option value="short_term_breakdown">Short-Term Breakdown</option>
+                <option value="bearish_marubozu">Bearish Marubozu</option>
+                <option value="bearish_momentum">Bearish Momentum</option>
+                <option value="bearish_range_breakdown">Bearish Range Breakdown</option>
+                <option value="bearish_vwap">Bearish VWAP</option>
+                <option value="bollinger_band_breakdown">Bollinger Band Breakdown</option>
+                <option value="bearish_engulfing">Bearish Engulfing</option>
+                <option value="bearish_piercing">Bearish Piercing</option>
                 </optgroup>
             </select>
         </div>
@@ -286,75 +304,119 @@
 </div>
 <script>
     document.getElementById("technicalOutlook").addEventListener("click", function() {
-    let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(opt => opt.value);
-    let strongIndicators = selectedIndicators.length;
-    let volume = parseFloat(document.getElementById("volume").value) || 0;
-    let avgVolume = parseFloat(document.getElementById("avgVolume").value) || 1;
-    let highVolume = volume > 1.5 * avgVolume;
-    let rsi = parseFloat(document.getElementById("rsi").value) || 0;
+        let selectedIndicators = Array.from(document.getElementById("indicators").selectedOptions).map(opt => opt.value);
+        let strongIndicators = selectedIndicators.length;
+        let volume = parseFloat(document.getElementById("volume").value) || 0;
+        let avgVolume = parseFloat(document.getElementById("avgVolume").value) || 1;
+        let highVolume = volume > 1.5 * avgVolume;
+        let rsi = parseFloat(document.getElementById("rsi").value) || 0;
 
-    let recommendation = "";
-    let justification = "";
-    let rsiMessage = "";
+        let recommendation = "";
+        let justification = "";
+        let rsiMessage = "";
 
-    // RSI insights
-    if (rsi > 60) {
-        rsiMessage = "RSI indicates strong bullish momentum.";
-    } else if (rsi >= 40 && rsi <= 60) {
-        rsiMessage = "RSI suggests a neutral trend.";
-    } else {
-        rsiMessage = "RSI is below 40, indicating bearish pressure.";
-    }
+        // Define Bullish & Bearish Indicators (Grouped by Strength)
+        let strongestIndicators = [
+            "52_week_breakout", "bullish_engulfing", "rsi_breakout", "macd_bullish_crossover",
+            "supertrend_buy", "golden_crossover", "volume_breakout",
+            "ema_200_death_cross", "ema_200_crossunder", "bearish_supertrend", "rsi_breakdown",
+            "macd_bearish_crossover", "strong_bearish_candle"
+        ];
 
-    if (strongIndicators >= 5 && highVolume) {
-        recommendation = "✅ Good to Trade + Very High Probability";
-        justification = "Strong confluence of signals + institutional volume = High conviction trade";
-    } else if (strongIndicators >= 4 && highVolume) {
-        recommendation = "✅ Good to Trade + High Probability";
-        justification = "Sufficient technical strength + institutional activity = Likely follow-through";
-    } else if (strongIndicators === 3) {
-        recommendation = "✅ Good to Trade";
-        justification = "Technical strength alone = Favorable trade setup";
-    } else {
-        recommendation = "❌ Not Recommended";
-        justification = "Lack of confirmation + low institutional support = Weak signal";
-    }
+        let moderatelyStrongIndicators = [
+            "bullish_momentum", "possible_breakout", "bullish_marubozu", "ema_200_crossover",
+            "bollinger_band", "swing_trade", "range_breakout", "strong_bullish_candle",
+            "possible_breakdown", "short_term_breakdown", "bearish_marubozu",
+            "bearish_momentum", "bearish_range_breakdown", "bollinger_band_breakdown"
+        ];
 
-    let output = `<div style="background-color: ${recommendation.includes('Not') ? '#ffcccc' : '#ccffcc'}; 
-                  padding: 10px; border-radius: 8px;">
-                    <strong>${recommendation}</strong><br>
-                    <span style="font-size: 20px;">${justification}</span><br>
-                    <span style="font-size: 16px; color: #007bff;">${rsiMessage}</span>
-                  </div>`;
+        let supportingIndicators = [
+            "bullish_piercing", "btst", "next_intraday", "short_term_breakout", "bullish_vwap",
+            "bearish_vwap", "bearish_engulfing", "bearish_piercing"
+        ];
 
-    document.getElementById("tradeRecommendation").innerHTML = output;
-});
+        // Count Bullish & Bearish Indicators Based on Groups
+        let strongestCount = selectedIndicators.filter(indicator => strongestIndicators.includes(indicator)).length;
+        let moderatelyStrongCount = selectedIndicators.filter(indicator => moderatelyStrongIndicators.includes(indicator)).length;
+        let supportingCount = selectedIndicators.filter(indicator => supportingIndicators.includes(indicator)).length;
 
-document.getElementById("validate").addEventListener("click", function() {
-    let isValid = true;
-    document.querySelectorAll("input").forEach(input => {
-        if (!input.value.trim()) {
-            input.classList.add("error");
-            isValid = false;
+        let bullishCount = selectedIndicators.filter(indicator => 
+            indicator.includes("bullish") || indicator.includes("supertrend_buy") || indicator.includes("golden_crossover")
+        ).length;
+
+        let bearishCount = selectedIndicators.filter(indicator => 
+            indicator.includes("bearish") || indicator.includes("death_cross") || indicator.includes("crossunder")
+        ).length;
+
+        // RSI Insights
+        if (rsi > 60) {
+            rsiMessage = "RSI indicates strong bullish momentum.";
+        } else if (rsi >= 40 && rsi <= 60) {
+            rsiMessage = "RSI suggests a neutral trend.";
         } else {
-            input.classList.remove("error");
+            rsiMessage = "RSI is below 40, indicating bearish pressure.";
         }
+
+        // Trade Recommendation Logic
+        if (bullishCount >= 5 && highVolume) {
+            recommendation = "✅ Bullish Trade - Very High Probability";
+            justification = "Strongest bullish signals + institutional volume = High conviction trade";
+        } else if (bullishCount >= 4 && highVolume) {
+            recommendation = "✅ Bullish Trade - High Probability";
+            justification = "Sufficient bullish technical strength + institutional activity = Likely follow-through";
+        } else if (bullishCount === 3) {
+            recommendation = "✅ Bullish Trade";
+            justification = "Technical strength alone = Favorable trade setup";
+        } else if (bearishCount >= 5 && highVolume) {
+            recommendation = "🔻 Bearish Trade - Very High Probability";
+            justification = "Strongest bearish signals + institutional selling = High conviction short trade";
+        } else if (bearishCount >= 4 && highVolume) {
+            recommendation = "🔻 Bearish Trade - High Probability";
+            justification = "Sufficient bearish technical strength + institutional activity = Likely follow-through";
+        } else if (bearishCount === 3) {
+            recommendation = "🔻 Bearish Trade";
+            justification = "Technical strength alone = Favorable short-selling setup";
+        } else {
+            recommendation = "❌ Not Recommended";
+            justification = "Lack of confirmation + low institutional support = Weak signal";
+        }
+
+        // Display Output
+        let output = `<div style="background-color: ${recommendation.includes('Not') ? '#ffcccc' : (recommendation.includes('Bearish') ? '#ffdddd' : '#ccffcc')}; 
+                      padding: 10px; border-radius: 8px;">
+                        <strong>${recommendation}</strong><br>
+                        <span style="font-size: 20px;">${justification}</span><br>
+                        <span style="font-size: 16px; color: #007bff;">${rsiMessage}</span>
+                      </div>`;
+
+        document.getElementById("tradeRecommendation").innerHTML = output;
     });
 
-    if (!isValid) {
-        alert("Please fill in all fields correctly.");
-        return;
-    }
+    document.getElementById("validate").addEventListener("click", function() {
+        let isValid = true;
+        document.querySelectorAll("input").forEach(input => {
+            if (!input.value.trim()) {
+                input.classList.add("error");
+                isValid = false;
+            } else {
+                input.classList.remove("error");
+            }
+        });
 
-    let volume = parseFloat(document.getElementById("volume").value);
-    let avgVolume = parseFloat(document.getElementById("avgVolume").value);
+        if (!isValid) {
+            alert("Please fill in all fields correctly.");
+            return;
+        }
 
-    if (volume > 1.5 * avgVolume) {
-        alert("High Volume Activity Detected");
-    } else if (volume < 0.5 * avgVolume) {
-        alert("Low Volume Activity Detected");
-    }
-});
+        let volume = parseFloat(document.getElementById("volume").value);
+        let avgVolume = parseFloat(document.getElementById("avgVolume").value);
+
+        if (volume > 1.5 * avgVolume) {
+            alert("High Volume Activity Detected");
+        } else if (volume < 0.5 * avgVolume) {
+            alert("Low Volume Activity Detected");
+        }
+    });
 
 document.getElementById("calculate").addEventListener("click", function() {
     let high = parseFloat(document.getElementById("high").value) || 0;
