@@ -1418,17 +1418,22 @@ ul.compact li {
 
   /* Level helpers (Hybrid C) */
   function computeIntradayLevels(row){
-    const entry = row.entry ?? row.close ?? 0;
-    if(!entry) return {entry:0,sl:0,t1:0,t2:0,R:0};
-    const slBase = row.sl ?? entry*0.99;
-    const baseR = Math.max(0.01, entry-slBase);
-    const fVol = row.volX!=null ? Math.min(Math.max(row.volX,0.7),2) : 1;
-    const R = baseR * (0.8 + 0.4*fVol);
-    const sl = entry - R;
-    const t1 = entry + R*1.2;
-    const t2 = entry + R*2;
-    return {entry,sl,t1,t2,R};
-  }
+
+const entry = row.entry ?? row.close ?? 0;
+if(!entry) return {entry:0,sl:0,t1:0,t2:0,R:0};
+
+// ✅ USE EXCEL SL DIRECTLY
+const sl = row.sl ?? entry * 0.99;
+
+// risk is simply structure risk
+const R = Math.max(0.01, entry - sl);
+
+// derive targets
+const t1 = entry + R;
+const t2 = entry + (2 * R);
+
+return {entry, sl, t1, t2, R};
+}
 
   function computeSwingLevels(row){
     const baseEntry = row.entry ?? row.close ?? 0;
@@ -1877,3 +1882,4 @@ ul.compact li {
 
 </body>
 </html>
+
