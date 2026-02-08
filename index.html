@@ -4,6 +4,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -1495,16 +1496,21 @@ diagnosticBar.innerHTML =
 
 /* Level helpers (Hybrid C) */
 function computeIntradayLevels(row){
+
 const entry = row.entry ?? row.close ?? 0;
 if(!entry) return {entry:0,sl:0,t1:0,t2:0,R:0};
-const slBase = row.sl ?? entry*0.99;
-const baseR = Math.max(0.01, entry-slBase);
-const fVol = row.volX!=null ? Math.min(Math.max(row.volX,0.7),2) : 1;
-const R = baseR * (0.8 + 0.4*fVol);
-const sl = entry - R;
-const t1 = entry + R*1.2;
-const t2 = entry + R*2;
-return {entry,sl,t1,t2,R};
+
+// ✅ USE EXCEL SL FIRST (NO RECALCULATION)
+let sl = row.sl ?? entry*0.99;
+
+// True R
+const R = Math.max(0.01, entry - sl);
+
+// Targets derived from R
+const t1 = row.t1 ?? (entry + R);
+const t2 = row.t2 ?? (entry + 2*R);
+
+return {entry, sl, t1, t2, R};
 }
 
 function computeSwingLevels(row){
