@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -192,7 +191,7 @@ height:calc(100vh - 80px);
 
 /* Stock list section */
 #stockListSection{
-flex:0 0 25%;
+flex:0 0 39%;
 min-height:150px;
 display:flex;
 flex-direction:column;
@@ -346,8 +345,8 @@ color:var(--muted);
 
 /* Panel section */
 #panelSection{
-flex:1 1 auto;
-min-height:0;
+flex:0.50 0 50%;
+min-height:150px;
 background:var(--panel-soft);
 border:1px solid var(--border-strong);
 border-radius:8px;
@@ -710,7 +709,35 @@ color: #ffffff !important;
 [data-theme="light"] #searchInput::placeholder {
 color: #6b7280 !important;
 }
+#panelSection {
+position: relative;
+}
 
+#stwpFooterDisclaimer {
+position: absolute;
+bottom: 8px;
+left: 10px;
+right: 10px;
+
+background: var(--panel);
+border: 1px solid var(--border-strong);
+border-radius: 8px;
+padding: 10px 12px;
+
+border-left: 4px solid var(--red);
+font-size: 12px;
+line-height: 1.48;
+}
+
+#stwpFooterDisclaimer .discTitle {
+font-weight: 700;
+color: var(--red);
+margin-bottom: 6px;
+}
+
+#stwpFooterDisclaimer .discText {
+color: var(--text);
+}
 </style>
 </head>
 
@@ -773,6 +800,7 @@ Upload Data
 <div id="panelTools">
 <span id="selectedLabel" style="font-size:11px;color:var(--muted);">No stock selected.</span>
 <button id="btnCopyPost" class="btn primary">Copy STWP Post</button>
+<button id="btnDownloadAll" class="btn primary">Download All STWP Posts</button>
 <button id="btnToggleWatch" class="btn ghost">Add to Watchlist</button>
 </div>
 
@@ -782,6 +810,17 @@ Upload Data
 <div id="momentumTab" class="tabPane"></div>
 <div id="strategyTab" class="tabPane"></div>
 <div id="riskTab" class="tabPane"></div>
+</div>
+<div id="stwpFooterDisclaimer">
+<div class="discTitle">⚠️ Educational Use Only</div>
+<div class="discText">
+This tool is strictly for <b>educational purposes only</b> and not for any form of investment advice.
+Options trading and equity trading involve significant market risk, including the potential loss of capital.
+</div>
+<div class="discText" style="margin-top:4px;">
+Please consult a <b>SEBI-registered financial advisor</b> before making any trading or investment decisions.
+All outcomes are solely your responsibility, and <b>STWP assumes no liability</b> for any decisions made using this dashboard.
+</div>
 </div>
 </section>
 
@@ -851,13 +890,12 @@ const COLS = [
 { label:'MACD',   key:'macd',   numeric:true },
 { label:'CCI',    key:'cci',    numeric:true },
 { label:'Stoch',  key:'stoch',  numeric:true },
+{ label:'Candle', key:'candleScore', numeric:true },
 { label:'Entry',  key:'entry',  numeric:true },
 { label:'SL',     key:'sl',     numeric:true },
 { label:'T1',     key:'t1',     numeric:true },
 { label:'T2',     key:'t2',     numeric:true },
 { label:'Risk',   key:'risk',   numeric:true },
-{ label:'RR %',   key:'rrPct',  numeric:true },
-{ label:'P&L',    key:'pnl',    numeric:true },
 { label:'AI Score', key:'score', numeric:true }
 ];
 
@@ -954,6 +992,40 @@ const symbol = row.Symbol || row.symbol || lc['symbol'] || '';
 if(!symbol) return null;
 
 const close = toNum(row.Close ?? lc['close']);
+
+/* ✅ INSERT HERE */
+const open  = toNum(row.Open ?? lc['open']);
+const high  = toNum(row.High ?? lc['high']);
+const low   = toNum(row.Low  ?? lc['low']);
+
+let candleLabel = 'NA';
+let candleScore = 0;
+if (
+open !== null &&
+close !== null &&
+high !== null &&
+low !== null &&
+(high - low) > 0
+) {
+const body  = Math.abs(close - open);
+const range = high - low;
+const pct = Math.round((body / range) * 100);
+
+// ✅ candleScore MUST be the real strength for sorting
+candleScore = pct;
+
+if (pct > 80) {
+candleLabel = `STRONG (${pct}%)`;
+} else if (pct > 60) {
+candleLabel = `MODERATE (${pct}%)`;
+} else {
+candleLabel = `WEAK (${pct}%)`;
+}
+
+}
+
+/* ✅ INSERT END */
+
 const pct   = toNum(row['% change'] ?? row.PercentChange ?? lc['%change'] ?? lc['percentchange']);
 const volume= toNum(row.Volume ?? lc['volume']);
 const volX  = toNum(row['Vol x'] ?? row.VolX ?? lc['volx']);
@@ -961,26 +1033,21 @@ const rsi   = toNum(row.RSI ?? lc['rsi']);
 const macd  = toNum(row.MACD ?? lc['macd']);
 const cci   = toNum(row.CCI ?? lc['cci']);
 const stoch = toNum(row.Stochastic ?? lc['stochastic']);
-const entry = toNum(row.Entry ?? row['Go Long Above'] ?? lc['entry'] ?? lc['golongabove']);
+const entry = toNum(row.Entry ?? row['high'] ?? lc['entry'] ?? lc['high']);
 const sl    = toNum(row['Stop Loss'] ?? row.StopLoss ?? lc['stoploss']);
 let t1      = toNum(row.Target1 ?? lc['target1']);
 let t2      = toNum(row.Target2 ?? lc['target2']);
 let risk    = toNum(row.Risk ?? lc['risk']);
-let rrPct   = toNum(row.RiskRewardPct ?? lc['riskrewardpct']);
 const pnl   = toNum(row.PotentialPL ?? lc['potentialpl']);
 const sector= row.Sector || lc['sector'] || '';
-
 if(entry!=null && sl!=null){
 const R = Math.max(0.01, entry-sl);
 if(risk==null) risk = R;
 if(!t1) t1 = entry + R;
 if(!t2) t2 = entry + 2*R;
-if(rrPct==null && close!=null && close>0){
-rrPct = ((close - sl)/close)*100;
-}
 }
 
-const score = computeAIScore({pct,volX,rsi,macd,rrPct});
+const score = computeAIScore({pct,volX,rsi,macd});
 
 return {
 raw:row,
@@ -993,12 +1060,13 @@ rsi,
 macd,
 cci,
 stoch,
+candleLabel,
+candleScore,
 entry,
 sl,
 t1,
 t2,
 risk,
-rrPct,
 pnl,
 sector,
 score
@@ -1040,10 +1108,6 @@ else if(o.rsi<30) s-=5;
 if(o.macd!=null){
 if(o.macd>0) s+=8;
 else if(o.macd<0) s-=8;
-}
-if(o.rrPct!=null){
-if(o.rrPct>=2) s+=5;
-if(o.rrPct<-3) s-=8;
 }
 return Math.max(0,Math.min(100,Math.round(s)));
 }
@@ -1189,8 +1253,10 @@ function handleSortClick(key,isMulti){
 let existing = currentSort.find(s=>s.key===key);
 if(!isMulti) currentSort = [];
 
-if(!existing){
-currentSort.push({key,dir:1});
+if (!existing) {
+// Candle strength should sort STRONG → WEAK by default
+const defaultDir = (key === 'candleScore') ? -1 : 1;
+currentSort.push({ key, dir: defaultDir });
 }else{
 if(existing.dir===1){
 existing.dir=-1;
@@ -1274,10 +1340,15 @@ td.classList.add('symbol-cell');
 const v = row[col.key];
 if(v==null || v===''){
 td.textContent='';
+}if (col.key === 'candleScore') {
+td.textContent = row.candleLabel;
 }else if(col.numeric){
 td.classList.add('numeric');
 td.textContent = Number.isFinite(v)?nf2.format(v):v;
-}else{
+}
+else if (col.key === 'candleScore') {
+td.textContent = row.candleLabel;
+} else {
 td.textContent = v;
 }
 
@@ -1418,41 +1489,44 @@ diagnosticBar.innerHTML =
 
 /* Level helpers (Hybrid C) */
 function computeIntradayLevels(row){
-
 const entry = row.entry ?? row.close ?? 0;
 if(!entry) return {entry:0,sl:0,t1:0,t2:0,R:0};
-
-// ✅ USE EXCEL SL DIRECTLY
-const sl = row.sl ?? entry * 0.99;
-
-// risk is simply structure risk
-const R = Math.max(0.01, entry - sl);
-
-// derive targets
-const t1 = entry + R;
-const t2 = entry + (2 * R);
-
-return {entry, sl, t1, t2, R};
+const slBase = row.sl ?? entry*0.99;
+const baseR = Math.max(0.01, entry-slBase);
+const fVol = row.volX!=null ? Math.min(Math.max(row.volX,0.7),2) : 1;
+const R = baseR * (0.8 + 0.4*fVol);
+const sl = entry - R;
+const t1 = entry + R*1.2;
+const t2 = entry + R*2;
+return {entry,sl,t1,t2,R};
 }
 
 function computeSwingLevels(row){
 const baseEntry = row.entry ?? row.close ?? 0;
 if(!baseEntry) return {entry:0,sl:0,t1:0,t2:0,R:0};
+
 const slBase = row.sl ?? baseEntry*0.97;
-const baseR  = Math.max(0.01, baseEntry-slBase);
+const baseR  = Math.max(0.01, baseEntry - slBase);
 
 const volAdj = row.volX!=null ? Math.min(Math.max(row.volX,0.6),2) : 1;
 const rsiAdj = row.rsi!=null ? (
-row.rsi<35 ? 0.9 :
-row.rsi>70 ? 1.2 : 1
+row.rsi < 35 ? 0.9 :
+row.rsi > 70 ? 1.2 : 1
 ) : 1;
 
-const swingR = baseR * (1.2*volAdj*rsiAdj);
-const sl     = baseEntry - swingR;
-const t1     = baseEntry + swingR*2;
-const t2     = baseEntry + swingR*3.5;
+const swingR = baseR * (1.2 * volAdj * rsiAdj);
+let sl       = baseEntry - swingR;
+const t1     = baseEntry + swingR * 2;
+const t2     = baseEntry + swingR * 3.5;
 
-return {entry:baseEntry,sl,t1,t2,R:swingR};
+// ⭐ NEW FIX: ensure Swing SL always below (wider than) Intraday SL
+const intra = computeIntradayLevels(row);
+if (sl >= intra.sl) {
+const extra = 0.25 * (intra.entry - intra.sl);  // 25% extra breathing room
+sl = intra.sl - extra;
+}
+
+return {entry: baseEntry, sl, t1, t2, R: swingR};
 }
 
 /* Outlook calculator for both UI + post */
@@ -1696,7 +1770,6 @@ pane.innerHTML = `
 </div>
 <div class="kpi">
 <b>Risk/Reward%</b>
-<div class="val">${row.rrPct!=null?nf2.format(row.rrPct)+'%':'-'}</div>
 </div>
 <div class="kpi">
 <b>AI Score</b>
@@ -1792,6 +1865,31 @@ const txt = buildStwpPost(selectedRow);
 navigator.clipboard.writeText(txt).then(()=> showToast('STWP post copied'));
 });
 
+// Download ALL STWP posts in one TXT file
+document.getElementById('btnDownloadAll').addEventListener('click', () => {
+if (!allRows.length) {
+showToast('No data to export');
+return;
+}
+
+let fullText = '';
+allRows.forEach(row => {
+fullText += buildStwpPost(row);
+fullText += '\n\n======================================\n\n';
+});
+
+const blob = new Blob([fullText], { type: 'text/plain' });
+const url = URL.createObjectURL(blob);
+
+const a = document.createElement('a');
+a.href = url;
+a.download = 'STWP_All_Posts.txt';
+a.click();
+
+URL.revokeObjectURL(url);
+showToast('Downloaded full STWP dataset');
+});
+
 function buildStwpPost(row){
 const sentiment = detectSentiment(row);
 const trend     = detectTrend(row);
@@ -1882,5 +1980,3 @@ showToast._t = setTimeout(()=> toast.style.display='none',2000);
 
 </body>
 </html>
-
-
