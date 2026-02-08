@@ -9,21 +9,21 @@
 
 <style>
 [data-theme="light"] #topHeader {
-    background: #ffffff !important;   /* Fully white header */
-    border-bottom: 1px solid #d1d5db !important;
+background: #ffffff !important;   /* Fully white header */
+border-bottom: 1px solid #d1d5db !important;
 }
 
 [data-theme="light"] #topHeader h1,
 [data-theme="light"] #topHeader .sub {
-    color: #000000 !important;        /* Ensure text visible */
+color: #000000 !important;        /* Ensure text visible */
 }
 
 [data-theme="light"] .toolbar {
-    background: #ffffff !important;
+background: #ffffff !important;
 }
 
 [data-theme="light"] .toolbar * {
-    color: #000000 !important;
+color: #000000 !important;
 }
 
 /* ============================= */
@@ -32,431 +32,431 @@
 
 /* Light theme (trading-friendly) */
 :root {
-  --bg: #f3f4f6;
-  --panel: #ffffff;
-  --panel-soft: #f9fafb;
-  --text: #0b1120;
-  --muted: #6b7280;
-  --border: #d1d5db;
-  --border-strong: #9ca3af;
+--bg: #f3f4f6;
+--panel: #ffffff;
+--panel-soft: #f9fafb;
+--text: #0b1120;
+--muted: #6b7280;
+--border: #d1d5db;
+--border-strong: #9ca3af;
 
-  --blue: #2563eb;
-  --blue-soft: rgba(37,99,235,0.12);
-  --blue-strong: #1d4ed8;
+--blue: #2563eb;
+--blue-soft: rgba(37,99,235,0.12);
+--blue-strong: #1d4ed8;
 
-  --green: #16a34a;
-  --green-soft: rgba(22,163,74,0.16);
+--green: #16a34a;
+--green-soft: rgba(22,163,74,0.16);
 
-  --red: #dc2626;
-  --red-soft: rgba(220,38,38,0.16);
+--red: #dc2626;
+--red-soft: rgba(220,38,38,0.16);
 
-  --black: #020617;
+--black: #020617;
 }
 
 /* Bloomberg-style dark theme */
 [data-theme="dark"] {
-  --bg: #020617;
-  --panel: #020617;
-  --panel-soft: #030712;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --border: rgba(148,163,184,0.35);
-  --border-strong: rgba(148,163,184,0.6);
+--bg: #020617;
+--panel: #020617;
+--panel-soft: #030712;
+--text: #e5e7eb;
+--muted: #9ca3af;
+--border: rgba(148,163,184,0.35);
+--border-strong: rgba(148,163,184,0.6);
 
-  --blue: #38bdf8;            /* cyan-ish, screen-like */
-  --blue-soft: rgba(56,189,248,0.16);
-  --blue-strong: #0ea5e9;
+--blue: #38bdf8;            /* cyan-ish, screen-like */
+--blue-soft: rgba(56,189,248,0.16);
+--blue-strong: #0ea5e9;
 
-  --green: #22c55e;
-  --green-soft: rgba(34,197,94,0.20);
+--green: #22c55e;
+--green-soft: rgba(34,197,94,0.20);
 
-  --red: #f97373;
-  --red-soft: rgba(248,113,113,0.22);
+--red: #f97373;
+--red-soft: rgba(248,113,113,0.22);
 
-  --black: #020617;
+--black: #020617;
 }
 
 /* Global */
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;padding:0}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial;
-  background:var(--bg);
-  color:var(--text);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial;
+background:var(--bg);
+color:var(--text);
 }
 
 /* Header */
 #topHeader{
-  border-bottom:1px solid var(--border-strong);
-  background:linear-gradient(90deg,#020617,#030712);
-  position:sticky;
-  top:0;
-  z-index:30;
+border-bottom:1px solid var(--border-strong);
+background:linear-gradient(90deg,#020617,#030712);
+position:sticky;
+top:0;
+z-index:30;
 }
 .container{
-  max-width:1200px;
-  margin:0 auto;
-  padding:10px 16px;
+max-width:1200px;
+margin:0 auto;
+padding:10px 16px;
 }
 #topHeader h1{
-  margin:0;
-  font-size:18px;
+margin:0;
+font-size:18px;
 }
 .sub{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:2px;
+font-size:12px;
+color:var(--muted);
+margin-top:2px;
 }
 .toolbar{
-  margin-top:8px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  align-items:center;
-  font-size:12px;
+margin-top:8px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+align-items:center;
+font-size:12px;
 }
 .fileLabel{
-  display:inline-flex;
-  flex-direction:column;
-  font-size:11px;
-  color:var(--muted);
+display:inline-flex;
+flex-direction:column;
+font-size:11px;
+color:var(--muted);
 }
 .fileLabel input[type="file"]{
-  margin-top:4px;
-  font-size:11px;
+margin-top:4px;
+font-size:11px;
 }
 
 .btn{
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--border-strong);
-  background:var(--panel-soft);
-  cursor:pointer;
-  font-size:11px;
+padding:6px 10px;
+border-radius:999px;
+border:1px solid var(--border-strong);
+background:var(--panel-soft);
+cursor:pointer;
+font-size:11px;
 }
 .btn.primary{
-  background:var(--blue);
-  color:#0b1120;
-  border-color:var(--blue-strong);
-  font-weight:600;
+background:var(--blue);
+color:#0b1120;
+border-color:var(--blue-strong);
+font-weight:600;
 }
 .btn.ghost{
-  background:transparent;
+background:transparent;
 }
 .btn:focus{
-  outline:2px solid var(--blue-soft);
+outline:2px solid var(--blue-soft);
 }
 
 /* Strength filter select */
 #strengthFilter{
-  padding:5px 8px;
-  border-radius:999px;
-  border:1px solid var(--border-strong);
-  background:var(--panel-soft);
-  font-size:11px;
+padding:5px 8px;
+border-radius:999px;
+border:1px solid var(--border-strong);
+background:var(--panel-soft);
+font-size:11px;
 }
 
 /* Theme toggle hint */
 #btnTheme{
-  font-weight:500;
+font-weight:500;
 }
 
 #searchInput{
-  flex:1;
-  min-width:140px;
-  padding:5px 8px;
-  border-radius:999px;
-  border:1px solid var(--border-strong);
-  background:var(--panel-soft);
-  font-size:11px;
+flex:1;
+min-width:140px;
+padding:5px 8px;
+border-radius:999px;
+border:1px solid var(--border-strong);
+background:var(--panel-soft);
+font-size:11px;
 }
 #searchInput:focus{
-  outline:2px solid var(--blue-soft);
+outline:2px solid var(--blue-soft);
 }
 #queryHint{
-  font-size:10px;
-  color:var(--muted);
-  margin-top:3px;
+font-size:10px;
+color:var(--muted);
+margin-top:3px;
 }
 
 /* Layout 25% + 75% */
 #layout{
-  max-width:1200px;
-  margin:0 auto;
-  padding:10px 16px 16px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  height:calc(100vh - 80px);
+max-width:1200px;
+margin:0 auto;
+padding:10px 16px 16px;
+display:flex;
+flex-direction:column;
+gap:10px;
+height:calc(100vh - 80px);
 }
 
 /* Stock list section */
 #stockListSection{
-  flex:0 0 25%;
-  min-height:150px;
-  display:flex;
-  flex-direction:column;
-  background:var(--panel-soft);
-  border:1px solid var(--border-strong);
-  border-radius:8px;
-  padding:6px 8px 6px;
+flex:0 0 25%;
+min-height:150px;
+display:flex;
+flex-direction:column;
+background:var(--panel-soft);
+border:1px solid var(--border-strong);
+border-radius:8px;
+padding:6px 8px 6px;
 }
 
 #stockTableWrapper{
-  flex:1;
-  overflow:auto;
-  border-radius:6px;
-  border:1px solid var(--border);
-  background:var(--panel);
+flex:1;
+overflow:auto;
+border-radius:6px;
+border:1px solid var(--border);
+background:var(--panel);
 }
 
 #stockTable{
-  border-collapse:collapse;
-  width:100%;
-  font-size:12px;
-  color:var(--text);
+border-collapse:collapse;
+width:100%;
+font-size:12px;
+color:var(--text);
 }
 
 /* Header */
 #stockTable thead th,
 #stockTable thead td{
-  padding:5px 6px;
-  border-bottom:1px solid var(--border-strong);
-  background:#020617;
-  color:var(--blue);
-  font-weight:600;
-  text-align:left;
-  white-space:nowrap;
-  cursor:pointer;
-  font-size:11px;
-  position:sticky;
-  top:0;
-  z-index:6;
+padding:5px 6px;
+border-bottom:1px solid var(--border-strong);
+background:#020617;
+color:var(--blue);
+font-weight:600;
+text-align:left;
+white-space:nowrap;
+cursor:pointer;
+font-size:11px;
+position:sticky;
+top:0;
+z-index:6;
 }
 .sort-indicator{
-  font-size:9px;
-  opacity:.75;
-  margin-left:3px;
+font-size:9px;
+opacity:.75;
+margin-left:3px;
 }
 
 /* Body cells */
 #stockTable tbody td{
-  padding:5px 6px;
-  border-bottom:1px solid var(--border);
-  white-space:nowrap;
+padding:5px 6px;
+border-bottom:1px solid var(--border);
+white-space:nowrap;
 }
 td.numeric{
-  text-align:right;
+text-align:right;
 }
 
 /* Zebra striping */
 #stockTable tbody tr:nth-child(odd){
-  background:rgba(15,23,42,0.6);
+background:rgba(15,23,42,0.6);
 }
 #stockTable tbody tr:nth-child(even){
-  background:rgba(15,23,42,0.3);
+background:rgba(15,23,42,0.3);
 }
 [data-theme="light"] #stockTable tbody tr:nth-child(odd){
-  background:rgba(0,0,0,0.01);
+background:rgba(0,0,0,0.01);
 }
 [data-theme="light"] #stockTable tbody tr:nth-child(even){
-  background:rgba(0,0,0,0.03);
+background:rgba(0,0,0,0.03);
 }
 
 /* Hover & selection */
 #stockTable tbody tr{
-  height:34px;
-  font-size:13px;
-  cursor:pointer;
-  transition:background 0.18s ease,color 0.18s ease,border-color 0.18s ease;
+height:34px;
+font-size:13px;
+cursor:pointer;
+transition:background 0.18s ease,color 0.18s ease,border-color 0.18s ease;
 }
 #stockTable tbody tr:hover{
-  background:var(--blue-soft);
+background:var(--blue-soft);
 }
 #stockTable tbody tr.selected-row{
-  background:rgba(56,189,248,0.28);
-  border-left:4px solid var(--blue);
-  transition:background 0.25s ease,border-left-color 0.25s ease;
+background:rgba(56,189,248,0.28);
+border-left:4px solid var(--blue);
+transition:background 0.25s ease,border-left-color 0.25s ease;
 }
 [data-theme="light"] #stockTable tbody tr.selected-row{
-  background:rgba(59,130,246,0.18);
+background:rgba(59,130,246,0.18);
 }
 
 /* Strength tint */
 tr.strong-row{
-  box-shadow:inset 0 0 0 1px var(--green-soft);
+box-shadow:inset 0 0 0 1px var(--green-soft);
 }
 tr.moderate-row{
-  box-shadow:inset 0 0 0 1px var(--blue-soft);
+box-shadow:inset 0 0 0 1px var(--blue-soft);
 }
 tr.weak-row{
-  box-shadow:inset 0 0 0 1px var(--red-soft);
+box-shadow:inset 0 0 0 1px var(--red-soft);
 }
 
 /* Sticky first column (symbol) */
 #stockTable td.symbol-cell,
 #stockTable th.symbol-col{
-  position:sticky;
-  left:0;
-  z-index:7;
-  background:var(--panel);
+position:sticky;
+left:0;
+z-index:7;
+background:var(--panel);
 }
 #stockTable th.symbol-col{
-  background:#020617;
+background:#020617;
 }
 #stockTable td.symbol-cell{
-  font-weight:600;
-  font-size:14px;
+font-weight:600;
+font-size:14px;
 }
 
 /* Change color for % change */
 .chg-pos{
-  color:var(--green);
-  font-weight:600;
+color:var(--green);
+font-weight:600;
 }
 .chg-neg{
-  color:var(--red);
-  font-weight:600;
+color:var(--red);
+font-weight:600;
 }
 
 .star{
-  font-size:13px;
+font-size:13px;
 }
 
 /* Column resizer */
 th{
-  position:relative;
+position:relative;
 }
 .resizer{
-  position:absolute;
-  right:0;
-  top:0;
-  width:6px;
-  cursor:col-resize;
-  user-select:none;
-  height:100%;
+position:absolute;
+right:0;
+top:0;
+width:6px;
+cursor:col-resize;
+user-select:none;
+height:100%;
 }
 
 /* Count text */
 #stockCount{
-  margin-top:4px;
-  font-size:11px;
-  color:var(--muted);
+margin-top:4px;
+font-size:11px;
+color:var(--muted);
 }
 
 /* Panel section */
 #panelSection{
-  flex:1 1 auto;
-  min-height:0;
-  background:var(--panel-soft);
-  border:1px solid var(--border-strong);
-  border-radius:8px;
-  padding:8px 10px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+flex:1 1 auto;
+min-height:0;
+background:var(--panel-soft);
+border:1px solid var(--border-strong);
+border-radius:8px;
+padding:8px 10px;
+display:flex;
+flex-direction:column;
+gap:6px;
 }
 
 /* Tabs */
 #tabs{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
+display:flex;
+flex-wrap:wrap;
+gap:6px;
 }
 .tabButton{
-  padding:5px 10px;
-  border-radius:999px;
-  border:1px solid var(--border-strong);
-  background:var(--panel);
-  font-size:11px;
-  cursor:pointer;
+padding:5px 10px;
+border-radius:999px;
+border:1px solid var(--border-strong);
+background:var(--panel);
+font-size:11px;
+cursor:pointer;
 }
 .tabButton.active{
-  border-color:var(--blue);
-  color:var(--blue);
-  background:var(--blue-soft);
+border-color:var(--blue);
+color:var(--blue);
+background:var(--blue-soft);
 }
 
 /* Diagnostics */
 #diagnosticBar{
-  padding:6px 8px;
-  border-radius:6px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  font-size:11px;
-  color:var(--muted);
-  min-height:26px;
-  border-left:4px solid var(--blue);
+padding:6px 8px;
+border-radius:6px;
+background:var(--panel);
+border:1px solid var(--border);
+font-size:11px;
+color:var(--muted);
+min-height:26px;
+border-left:4px solid var(--blue);
 }
 
 /* Panel tools */
 #panelTools{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  align-items:center;
-  font-size:11px;
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+align-items:center;
+font-size:11px;
 }
 
 /* Tab content */
 #tabContent{
-  flex:1 1 auto;
-  min-height:0;
-  border-radius:6px;
-  border:1px solid var(--border);
-  padding:8px 10px;
-  background:var(--panel);
-  overflow:auto;
-  font-size:12px;
+flex:1 1 auto;
+min-height:0;
+border-radius:6px;
+border:1px solid var(--border);
+padding:8px 10px;
+background:var(--panel);
+overflow:auto;
+font-size:12px;
 }
 .tabPane{display:none;}
 .tabPane.active{display:block;}
 
 /* KPI grid */
 .kpiGrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:8px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:8px;
 }
 .kpi{
-  border-radius:6px;
-  border:1px solid var(--border);
-  padding:6px 8px;
-  background:var(--panel-soft);
+border-radius:6px;
+border:1px solid var(--border);
+padding:6px 8px;
+background:var(--panel-soft);
 }
 .kpi b{
-  display:block;
-  font-size:10px;
-  color:var(--muted);
-  margin-bottom:2px;
+display:block;
+font-size:10px;
+color:var(--muted);
+margin-bottom:2px;
 }
 .kpi .val{
-  font-size:13px;
-  font-weight:600;
+font-size:13px;
+font-weight:600;
 }
 
 /* Lists */
 .sectionTitle{
-  font-weight:600;
-  margin-top:8px;
-  margin-bottom:3px;
+font-weight:600;
+margin-top:8px;
+margin-bottom:3px;
 }
 ul.compact{
-  margin:4px 0 6px 16px;
-  padding:0;
+margin:4px 0 6px 16px;
+padding:0;
 }
 ul.compact li{
-  margin-bottom:2px;
+margin-bottom:2px;
 }
 
 /* Tags */
 .tag{
-  display:inline-block;
-  padding:2px 7px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:600;
-  margin-right:4px;
+display:inline-block;
+padding:2px 7px;
+border-radius:999px;
+font-size:10px;
+font-weight:600;
+margin-right:4px;
 }
 .tag-bullish{background:var(--green-soft);color:var(--green);}
 .tag-bearish{background:var(--red-soft);color:var(--red);}
@@ -468,67 +468,67 @@ ul.compact li{
 
 /* Toast */
 #toast{
-  position:fixed;
-  right:12px;
-  bottom:12px;
-  padding:8px 10px;
-  font-size:11px;
-  background:#020617;
-  color:#f9fafb;
-  border-radius:8px;
-  border:1px solid var(--border-strong);
-  display:none;
-  z-index:50;
+position:fixed;
+right:12px;
+bottom:12px;
+padding:8px 10px;
+font-size:11px;
+background:#020617;
+color:#f9fafb;
+border-radius:8px;
+border:1px solid var(--border-strong);
+display:none;
+z-index:50;
 }
 
 /* Modal */
 #modalBackdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:60;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:60;
 }
 #modal{
-  width:min(520px,94vw);
-  background:var(--panel-soft);
-  border-radius:10px;
-  border:1px solid var(--border-strong);
-  padding:12px 14px;
-  box-shadow:0 18px 50px rgba(0,0,0,0.4);
+width:min(520px,94vw);
+background:var(--panel-soft);
+border-radius:10px;
+border:1px solid var(--border-strong);
+padding:12px 14px;
+box-shadow:0 18px 50px rgba(0,0,0,0.4);
 }
 #modalHeader{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:6px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:6px;
 }
 #modalSymbol{
-  font-weight:700;
-  font-size:15px;
+font-weight:700;
+font-size:15px;
 }
 #modalClose{
-  border:none;
-  background:transparent;
-  cursor:pointer;
-  font-size:12px;
+border:none;
+background:transparent;
+cursor:pointer;
+font-size:12px;
 }
 
 /* Responsive */
 @media (max-width:768px){
-  #layout{
-    height:auto;
-  }
-  #stockListSection{
-    flex:0 0 auto;
-    height:auto;
-  }
-  #panelSection{
-    flex:0 0 auto;
-    height:auto;
-  }
+#layout{
+height:auto;
+}
+#stockListSection{
+flex:0 0 auto;
+height:auto;
+}
+#panelSection{
+flex:0 0 auto;
+height:auto;
+}
 }
 
 /* ============================= */
@@ -538,27 +538,27 @@ ul.compact li{
 /* Make all table text theme-colored */
 #stockTable td,
 #stockTable th {
-    color: var(--text) !important;
+color: var(--text) !important;
 }
 
 /* Ensure KPI cards follow theme */
 .kpi .val,
 .kpi b {
-    color: var(--text) !important;
+color: var(--text) !important;
 }
 
 /* Pane text */
 .tabPane,
 .sectionTitle,
 ul.compact li {
-    color: var(--text) !important;
+color: var(--text) !important;
 }
 
 /* Modal text */
 #modal,
 #modalBody,
 #modalHeader {
-    color: var(--text) !important;
+color: var(--text) !important;
 }
 
 /* Header and toolbar text */
@@ -567,21 +567,21 @@ ul.compact li {
 #topHeader .sub,
 .toolbar,
 .toolbar * {
-    color: var(--text) !important;
+color: var(--text) !important;
 }
 
 /* Ensure action buttons use theme text */
 .btn {
-    color: var(--text);
+color: var(--text);
 }
 .btn.primary {
-    color: #0b1120; /* Strong readable on cyan/blue */
+color: #0b1120; /* Strong readable on cyan/blue */
 }
 
 /* Analytics area */
 #tabContent,
 #tabContent * {
-    color: var(--text) !important;
+color: var(--text) !important;
 }
 /* ============================= */
 /*  FIX BUTTON & TAB TEXT COLOR  */
@@ -591,37 +591,37 @@ ul.compact li {
 /* Toolbar buttons: Demo, Theme, Reset, Strong/Moderate/Weak */
 [data-theme="dark"] .btn.ghost,
 [data-theme="dark"] .btn {
-  color: #e8f0ff !important;        /* Bright white-blue text */
-  border-color: rgba(120, 150, 255, 0.45) !important;
+color: #e8f0ff !important;        /* Bright white-blue text */
+border-color: rgba(120, 150, 255, 0.45) !important;
 }
 
 [data-theme="dark"] .btn:hover {
-  background: rgba(59, 130, 246, 0.25) !important;
-  border-color: #3b82f6 !important;
-  color: #ffffff !important;
+background: rgba(59, 130, 246, 0.25) !important;
+border-color: #3b82f6 !important;
+color: #ffffff !important;
 }
 
 /* Active blue primary button (Copy STWP Post) */
 [data-theme="dark"] .btn.primary {
-  background: #3b82f6 !important;
-  border-color: #1d4ed8 !important;
-  color: white !important;
+background: #3b82f6 !important;
+border-color: #1d4ed8 !important;
+color: white !important;
 }
 
 /* ============================= */
 /*     TAB BUTTON VISIBILITY     */
 /* ============================= */
 [data-theme="dark"] .tabButton {
-  color: #dbe4ff !important;           /* Light readable text */
-  border-color: rgba(110, 130, 180, .4) !important;
-  background: rgba(255,255,255,0.03) !important;
+color: #dbe4ff !important;           /* Light readable text */
+border-color: rgba(110, 130, 180, .4) !important;
+background: rgba(255,255,255,0.03) !important;
 }
 
 [data-theme="dark"] .tabButton.active {
-  background: rgba(59, 130, 246, 0.28) !important;
-  color: #ffffff !important;           /* Pure white text for active tab */
-  border-color: #3b82f6 !important;
-  font-weight: 600;
+background: rgba(59, 130, 246, 0.28) !important;
+color: #ffffff !important;           /* Pure white text for active tab */
+border-color: #3b82f6 !important;
+font-weight: 600;
 }
 /* ===================================================== */
 /* FIX: Restore Proper Text Color in LIGHT MODE           */
@@ -637,25 +637,25 @@ ul.compact li {
 [data-theme="light"] #selectedLabel,
 [data-theme="light"] #panelTools *,
 [data-theme="light"] #tabs .tabButton {
-    color: #000000 !important;  /* TRUE readable text */
+color: #000000 !important;  /* TRUE readable text */
 }
 
 /* Light mode active tab styling */
 [data-theme="light"] .tabButton.active {
-    color: #2563eb !important;
-    border-color: #2563eb !important;
-    background: rgba(37,99,235,0.10) !important;
+color: #2563eb !important;
+border-color: #2563eb !important;
+background: rgba(37,99,235,0.10) !important;
 }
 
 /* Light mode ghost buttons */
 [data-theme="light"] .btn.ghost {
-    color: #000000 !important;
-    border-color: #9ca3af !important;
+color: #000000 !important;
+border-color: #9ca3af !important;
 }
 
 /* Light mode primary button */
 [data-theme="light"] .btn.primary {
-    color: white !important;
+color: white !important;
 }
 /* ===================================================== */
 /* LIGHT MODE FINAL TEXT VISIBILITY FIX (Header + Toolbar) */
@@ -666,19 +666,19 @@ ul.compact li {
 [data-theme="light"] .toolbar,
 [data-theme="light"] .toolbar *,
 [data-theme="light"] #queryHint {
-    color: #000000 !important;
+color: #000000 !important;
 }
 
 /* Light Mode table header text */
 [data-theme="light"] #stockTable thead th {
-    color: #2563eb !important; /* readable blue */
-    background: #f1f5f9 !important; /* soft grey */
+color: #2563eb !important; /* readable blue */
+background: #f1f5f9 !important; /* soft grey */
 }
 
 /* Light Mode selected row highlight */
 [data-theme="light"] #stockTable tbody tr.selected-row {
-    background: rgba(37, 99, 235, 0.18) !important;
-    border-left-color: #2563eb !important;
+background: rgba(37, 99, 235, 0.18) !important;
+border-left-color: #2563eb !important;
 }
 /* ===================================================== */
 /* LIGHT MODE — BUTTONS, INPUTS & SELECT FIX             */
@@ -689,26 +689,26 @@ ul.compact li {
 [data-theme="light"] #strengthFilter,
 [data-theme="light"] #strengthFilter *,
 [data-theme="light"] #searchInput {
-    color: #000000 !important;
-    border-color: #9ca3af !important;
-    background: #ffffff !important;
+color: #000000 !important;
+border-color: #9ca3af !important;
+background: #ffffff !important;
 }
 
 /* Light Mode Hover */
 [data-theme="light"] .btn:hover {
-    background: rgba(0,0,0,0.06) !important;
-    color: #000000 !important;
+background: rgba(0,0,0,0.06) !important;
+color: #000000 !important;
 }
 
 /* Light Mode primary button (Copy STWP Post) */
 [data-theme="light"] .btn.primary {
-    background: #2563eb !important;
-    color: #ffffff !important;
+background: #2563eb !important;
+color: #ffffff !important;
 }
 
 /* Light Mode input placeholder fix */
 [data-theme="light"] #searchInput::placeholder {
-    color: #6b7280 !important;
+color: #6b7280 !important;
 }
 
 </style>
@@ -717,707 +717,707 @@ ul.compact li {
 <body>
 
 <header id="topHeader">
-  <div class="container">
-    <h1>STWP Equity Dashboard — Colored Edition</h1>
-    <div class="sub">Scroll stocks above • STWP trade intelligence below</div>
+<div class="container">
+<h1>STWP Equity Dashboard — Colored Edition</h1>
+<div class="sub">Scroll stocks above • STWP trade intelligence below</div>
 
-    <div class="toolbar">
-      <label class="fileLabel">
-        Upload Data
-        <input type="file" id="fileInput" accept=".csv,.xls,.xlsx" />
-      </label>
+<div class="toolbar">
+<label class="fileLabel">
+Upload Data
+<input type="file" id="fileInput" accept=".csv,.xls,.xlsx" />
+</label>
 
-      <button id="btnDemo" class="btn ghost">Demo</button>
+<button id="btnDemo" class="btn ghost">Demo</button>
 
-      <!-- Strength Filter -->
-      <select id="strengthFilter">
-        <option value="all">All</option>
-        <option value="strong">Strong</option>
-        <option value="moderate">Moderate</option>
-        <option value="weak">Weak</option>
-      </select>
+<!-- Strength Filter -->
+<select id="strengthFilter">
+<option value="all">All</option>
+<option value="strong">Strong</option>
+<option value="moderate">Moderate</option>
+<option value="weak">Weak</option>
+</select>
 
-      <input id="searchInput" placeholder="Search symbol or query e.g. RSI>60, %CHG>2" />
-      <button id="btnTheme" class="btn ghost">Theme</button>
-      <button id="btnReset" class="btn ghost">Reset</button>
-    </div>
-    <div id="queryHint">Symbol search + filters: RSI&gt;60, VOLX&gt;1.2, %CHG&gt;2, RSI&lt;30 etc. • Strength: Strong / Moderate / Weak</div>
-  </div>
+<input id="searchInput" placeholder="Search symbol or query e.g. RSI>60, %CHG>2" />
+<button id="btnTheme" class="btn ghost">Theme</button>
+<button id="btnReset" class="btn ghost">Reset</button>
+</div>
+<div id="queryHint">Symbol search + filters: RSI&gt;60, VOLX&gt;1.2, %CHG&gt;2, RSI&lt;30 etc. • Strength: Strong / Moderate / Weak</div>
+</div>
 </header>
 
 <div id="layout">
 
-  <!-- Stock list 25% -->
-  <section id="stockListSection">
-    <div id="stockTableWrapper">
-      <table id="stockTable">
-        <thead id="stockHeader"></thead>
-        <tbody id="stockBody"></tbody>
-      </table>
-    </div>
-    <div id="stockCount">No data loaded.</div>
-  </section>
+<!-- Stock list 25% -->
+<section id="stockListSection">
+<div id="stockTableWrapper">
+<table id="stockTable">
+<thead id="stockHeader"></thead>
+<tbody id="stockBody"></tbody>
+</table>
+</div>
+<div id="stockCount">No data loaded.</div>
+</section>
 
-  <!-- Analytics 75% -->
-  <section id="panelSection">
-    <div id="tabs">
-      <button class="tabButton active" data-tab="intradayTab">Intraday</button>
-      <button class="tabButton" data-tab="swingTab">Swing</button>
-      <button class="tabButton" data-tab="momentumTab">Volume &amp; Momentum</button>
-      <button class="tabButton" data-tab="strategyTab">Strategy View</button>
-      <button class="tabButton" data-tab="riskTab">Risk</button>
-    </div>
+<!-- Analytics 75% -->
+<section id="panelSection">
+<div id="tabs">
+<button class="tabButton active" data-tab="intradayTab">Intraday</button>
+<button class="tabButton" data-tab="swingTab">Swing</button>
+<button class="tabButton" data-tab="momentumTab">Volume &amp; Momentum</button>
+<button class="tabButton" data-tab="strategyTab">Strategy View</button>
+<button class="tabButton" data-tab="riskTab">Risk</button>
+</div>
 
-    <div id="diagnosticBar">Load a file and click any stock to view STWP mapping.</div>
+<div id="diagnosticBar">Load a file and click any stock to view STWP mapping.</div>
 
-    <div id="panelTools">
-      <span id="selectedLabel" style="font-size:11px;color:var(--muted);">No stock selected.</span>
-      <button id="btnCopyPost" class="btn primary">Copy STWP Post</button>
-      <button id="btnToggleWatch" class="btn ghost">Add to Watchlist</button>
-    </div>
+<div id="panelTools">
+<span id="selectedLabel" style="font-size:11px;color:var(--muted);">No stock selected.</span>
+<button id="btnCopyPost" class="btn primary">Copy STWP Post</button>
+<button id="btnToggleWatch" class="btn ghost">Add to Watchlist</button>
+</div>
 
-    <div id="tabContent">
-      <div id="intradayTab" class="tabPane active"></div>
-      <div id="swingTab" class="tabPane"></div>
-      <div id="momentumTab" class="tabPane"></div>
-      <div id="strategyTab" class="tabPane"></div>
-      <div id="riskTab" class="tabPane"></div>
-    </div>
-  </section>
+<div id="tabContent">
+<div id="intradayTab" class="tabPane active"></div>
+<div id="swingTab" class="tabPane"></div>
+<div id="momentumTab" class="tabPane"></div>
+<div id="strategyTab" class="tabPane"></div>
+<div id="riskTab" class="tabPane"></div>
+</div>
+</section>
 
 </div>
 
 <!-- Modal -->
 <div id="modalBackdrop">
-  <div id="modal">
-    <div id="modalHeader">
-      <div>
-        <div id="modalSymbol"></div>
-        <div id="modalSubtitle" style="font-size:11px;color:var(--muted);"></div>
-      </div>
-      <button id="modalClose">Close</button>
-    </div>
-    <div id="modalBody" style="font-size:12px;"></div>
-  </div>
+<div id="modal">
+<div id="modalHeader">
+<div>
+<div id="modalSymbol"></div>
+<div id="modalSubtitle" style="font-size:11px;color:var(--muted);"></div>
+</div>
+<button id="modalClose">Close</button>
+</div>
+<div id="modalBody" style="font-size:12px;"></div>
+</div>
 </div>
 
 <div id="toast"></div>
 
 <script>
 (function(){
-  const fileInput      = document.getElementById('fileInput');
-  const btnDemo        = document.getElementById('btnDemo');
-  const btnTheme       = document.getElementById('btnTheme');
-  const btnReset       = document.getElementById('btnReset');
-  const searchInput    = document.getElementById('searchInput');
-  const strengthFilter = document.getElementById('strengthFilter');
-
-  const stockHeader = document.getElementById('stockHeader');
-  const stockBody   = document.getElementById('stockBody');
-  const stockCount  = document.getElementById('stockCount');
-
-  const tabs        = document.querySelectorAll('.tabButton');
-  const tabPanes    = document.querySelectorAll('.tabPane');
-
-  const diagnosticBar  = document.getElementById('diagnosticBar');
-  const selectedLabel  = document.getElementById('selectedLabel');
-  const btnCopyPost    = document.getElementById('btnCopyPost');
-  const btnToggleWatch = document.getElementById('btnToggleWatch');
-  const toast          = document.getElementById('toast');
-
-  const modalBackdrop = document.getElementById('modalBackdrop');
-  const modalSymbol   = document.getElementById('modalSymbol');
-  const modalSubtitle = document.getElementById('modalSubtitle');
-  const modalBody     = document.getElementById('modalBody');
-  const modalClose    = document.getElementById('modalClose');
-
-  let allRows = [];
-  let viewRows = [];
-  let currentSort = []; // [{key, dir}]
-  let selectedRow = null;
-  let watchlist = new Set(JSON.parse(localStorage.getItem('stwp_watchlist_eq')||'[]'));
-
-  const nf2 = new Intl.NumberFormat(undefined,{maximumFractionDigits:2});
-  const nf0 = new Intl.NumberFormat(undefined,{maximumFractionDigits:0});
-
-  const COLS = [
-    { label:'★',      key:'star',   numeric:false },
-    { label:'Symbol', key:'symbol', numeric:false },
-    { label:'Close',  key:'close',  numeric:true },
-    { label:'% Chg',  key:'pct',    numeric:true },
-    { label:'Vol X',  key:'volX',   numeric:true },
-    { label:'Volume', key:'volume', numeric:true },
-    { label:'RSI',    key:'rsi',    numeric:true },
-    { label:'MACD',   key:'macd',   numeric:true },
-    { label:'CCI',    key:'cci',    numeric:true },
-    { label:'Stoch',  key:'stoch',  numeric:true },
-    { label:'Entry',  key:'entry',  numeric:true },
-    { label:'SL',     key:'sl',     numeric:true },
-    { label:'T1',     key:'t1',     numeric:true },
-    { label:'T2',     key:'t2',     numeric:true },
-    { label:'Risk',   key:'risk',   numeric:true },
-    { label:'RR %',   key:'rrPct',  numeric:true },
-    { label:'P&L',    key:'pnl',    numeric:true },
-    { label:'AI Score', key:'score', numeric:true }
-  ];
-
-  /* Theme toggle (default = dark) */
-  const THEME_KEY = 'stwp_eq_theme';
-  try{
-    const t = localStorage.getItem(THEME_KEY);
-    if(t){
-      document.documentElement.setAttribute('data-theme', t);
-    }else{
-      document.documentElement.setAttribute('data-theme','dark');
-    }
-  }catch(e){}
-  btnTheme.addEventListener('click', ()=>{
-    const cur = document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';
-    const next = cur==='dark'?'light':'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try{ localStorage.setItem(THEME_KEY,next); }catch(e){}
-  });
-
-  /* File handling */
-  fileInput.addEventListener('change', (e)=>{
-    const file = e.target.files[0];
-    if(file) readFile(file);
-  });
-
-  function readFile(file){
-    const reader = new FileReader();
-    reader.onerror = ()=> alert('Failed to read file.');
-    reader.onload = (e)=>{
-      try{
-        if(/\.csv$/i.test(file.name)){
-          parseCSV(e.target.result);
-        }else{
-          parseSheet(new Uint8Array(e.target.result));
-        }
-      }catch(err){
-        console.error(err);
-        alert('Could not parse file. Check headers.');
-      }
-    };
-    if(/\.csv$/i.test(file.name)) reader.readAsText(file);
-    else reader.readAsArrayBuffer(file);
-  }
-
-  function parseSheet(arr){
-    const wb = XLSX.read(arr,{type:'array'});
-    const ws = wb.Sheets[wb.SheetNames[0]];
-    const json = XLSX.utils.sheet_to_json(ws,{defval:''});
-    processData(json);
-  }
-
-  function parseCSV(text){
-    const rows = text.split(/\r?\n/).filter(Boolean);
-    if(!rows.length) return;
-    const parseLine = (line)=>{
-      const out = []; let cur='', q=false;
-      for(let i=0;i<line.length;i++){
-        const ch=line[i];
-        if(ch==='"'){ q=!q; continue; }
-        if(ch===',' && !q){ out.push(cur); cur=''; }
-        else cur+=ch;
-      }
-      out.push(cur);
-      return out;
-    };
-    const headers = parseLine(rows[0]).map(h=>h.trim());
-    const data = rows.slice(1).map(r=>{
-      const cols = parseLine(r);
-      const obj = {};
-      headers.forEach((h,i)=>{ obj[h]=cols[i]||''; });
-      return obj;
-    });
-    processData(data);
-  }
-
-  function toNum(val){
-    if(val===null || val===undefined) return null;
-    const s = String(val).replace(/[%,$\s]/g,'').replace(/,/g,'').trim();
-    if(!s) return null;
-    const n = parseFloat(s);
-    return Number.isFinite(n)?n:null;
-  }
-
-  function processData(data){
-    const out = [];
-    const mapRow = (row)=>{
-      const lc={};
-      Object.keys(row).forEach(k=>{
-        lc[k.toLowerCase().replace(/\s+/g,'')] = row[k];
-      });
-
-      const symbol = row.Symbol || row.symbol || lc['symbol'] || '';
-      if(!symbol) return null;
-
-      const close = toNum(row.Close ?? lc['close']);
-      const pct   = toNum(row['% change'] ?? row.PercentChange ?? lc['%change'] ?? lc['percentchange']);
-      const volume= toNum(row.Volume ?? lc['volume']);
-      const volX  = toNum(row['Vol x'] ?? row.VolX ?? lc['volx']);
-      const rsi   = toNum(row.RSI ?? lc['rsi']);
-      const macd  = toNum(row.MACD ?? lc['macd']);
-      const cci   = toNum(row.CCI ?? lc['cci']);
-      const stoch = toNum(row.Stochastic ?? lc['stochastic']);
-      const entry = toNum(row.Entry ?? row['Go Long Above'] ?? lc['entry'] ?? lc['golongabove']);
-      const sl    = toNum(row['Stop Loss'] ?? row.StopLoss ?? lc['stoploss']);
-      let t1      = toNum(row.Target1 ?? lc['target1']);
-      let t2      = toNum(row.Target2 ?? lc['target2']);
-      let risk    = toNum(row.Risk ?? lc['risk']);
-      let rrPct   = toNum(row.RiskRewardPct ?? lc['riskrewardpct']);
-      const pnl   = toNum(row.PotentialPL ?? lc['potentialpl']);
-      const sector= row.Sector || lc['sector'] || '';
-
-      if(entry!=null && sl!=null){
-        const R = Math.max(0.01, entry-sl);
-        if(risk==null) risk = R;
-        if(!t1) t1 = entry + R;
-        if(!t2) t2 = entry + 2*R;
-        if(rrPct==null && close!=null && close>0){
-          rrPct = ((close - sl)/close)*100;
-        }
-      }
-
-      const score = computeAIScore({pct,volX,rsi,macd,rrPct});
-
-      return {
-        raw:row,
-        symbol,
-        close,
-        pct,
-        volume,
-        volX,
-        rsi,
-        macd,
-        cci,
-        stoch,
-        entry,
-        sl,
-        t1,
-        t2,
-        risk,
-        rrPct,
-        pnl,
-        sector,
-        score
-      };
-    };
-
-    data.forEach(r=>{
-      const m = mapRow(r);
-      if(m) out.push(m);
-    });
-
-    allRows = out;
-    applyFilterSort();
-    buildHeader();
-    renderTable();
-    autoSelectBest();
-    showToast('Loaded '+out.length+' stocks');
-  }
-
-  /* AI score */
-  function computeAIScore(o){
-    let s = 50;
-    if(o.pct!=null){
-      if(o.pct>3) s+=15;
-      else if(o.pct>0) s+=5;
-      else if(o.pct<-3) s-=10;
-      else if(o.pct<0) s-=3;
-    }
-    if(o.volX!=null){
-      if(o.volX>1.5) s+=15;
-      else if(o.volX>1.0) s+=8;
-      else if(o.volX<0.6) s-=5;
-    }
-    if(o.rsi!=null){
-      if(o.rsi>=40 && o.rsi<=60) s+=10;
-      else if(o.rsi>70) s-=10;
-      else if(o.rsi<30) s-=5;
-    }
-    if(o.macd!=null){
-      if(o.macd>0) s+=8;
-      else if(o.macd<0) s-=8;
-    }
-    if(o.rrPct!=null){
-      if(o.rrPct>=2) s+=5;
-      if(o.rrPct<-3) s-=8;
-    }
-    return Math.max(0,Math.min(100,Math.round(s)));
-  }
-
-  /* Strength score 0–5 */
-  function computeStrength(row){
-    let s=0;
-    const {pct,volX,rsi,macd,score} = row;
-    if(pct!=null){
-      if(pct>3) s+=2;
-      else if(pct>0) s+=1;
-      else if(pct<-3) s-=2;
-      else if(pct<0) s-=1;
-    }
-    if(volX!=null){
-      if(volX>1.5) s+=2;
-      else if(volX>1.0) s+=1;
-      else if(volX<0.6) s-=1;
-    }
-    if(rsi!=null){
-      if(rsi>=40 && rsi<=60) s+=1.5;
-      else if(rsi>70) s-=1;
-      else if(rsi<30) s-=0.5;
-    }
-    if(macd!=null){
-      if(macd>0) s+=1;
-      else if(macd<0) s-=1;
-    }
-    if(score>=70) s+=0.5;
-    if(score<=30) s-=0.5;
-
-    const norm = Math.max(0,Math.min(5,((s+6)/12)*5));
-    return norm;
-  }
-
-  /* Strength band classifier for filter */
-  function classifyStrengthBand(row){
-    const st = computeStrength(row);
-    if(st >= 4) return 'strong';
-    if(st >= 2.5) return 'moderate';
-    return 'weak';
-  }
-
-  /* Filter + search + strength filter */
-  function applyFilterSort(){
-    const q = searchInput.value.trim().toUpperCase();
-    const strengthSel = (strengthFilter.value || 'all').toLowerCase();
-    let rows = [...allRows];
-
-    /* Strength band filter first */
-    if(strengthSel !== 'all'){
-      rows = rows.filter(r => classifyStrengthBand(r) === strengthSel);
-    }
-
-    /* Search / numeric filters */
-    if(q){
-      const query = q.replace(/\s+/g,'');
-      const match = query.match(/^(RSI|VOLX|%CHG|PCT)([><]=?)(-?\d+(\.\d+)?)$/i);
-      if(match){
-        const field = match[1].toUpperCase();
-        const op    = match[2];
-        const val   = parseFloat(match[3]);
-        rows = rows.filter(r=>{
-          let v=null;
-          if(field==='RSI') v=r.rsi;
-          else if(field==='VOLX') v=r.volX;
-          else if(field==='%CHG' || field==='PCT') v=r.pct;
-          if(v==null) return false;
-          if(op==='>') return v>val;
-          if(op==='>=')return v>=val;
-          if(op==='<') return v<val;
-          if(op==='<=')return v<=val;
-          return false;
-        });
-      }else{
-        rows = rows.filter(r=> r.symbol.toUpperCase().includes(q));
-      }
-    }
-
-    if(currentSort.length){
-      rows.sort((a,b)=>{
-        for(const s of currentSort){
-          const ka=s.key;
-          let va=a[ka], vb=b[ka];
-          if(va==null && vb==null) continue;
-          if(va==null) return 1;
-          if(vb==null) return -1;
-          if(typeof va==='string'){
-            const cmp = va.localeCompare(vb);
-            if(cmp!==0) return cmp * s.dir;
-          }else{
-            if(va<vb) return -1*s.dir;
-            if(va>vb) return 1*s.dir;
-          }
-        }
-        return 0;
-      });
-    }
-
-    viewRows = rows;
-  }
-
-  searchInput.addEventListener('input', ()=>{
-    applyFilterSort();
-    renderTable();
-  });
-
-  strengthFilter.addEventListener('change', ()=>{
-    applyFilterSort();
-    renderTable();
-  });
-
-  /* Header + sorting + resizer */
-  function buildHeader(){
-    stockHeader.innerHTML='';
-    const tr = document.createElement('tr');
-
-    COLS.forEach(col=>{
-      const th = document.createElement('th');
-      th.textContent = col.label;
-
-      if(col.key==='symbol'){
-        th.classList.add('symbol-col');
-      }
-
-      if(col.key!=='star'){
-        const span = document.createElement('span');
-        span.className='sort-indicator';
-        span.textContent='';
-        th.appendChild(span);
-        th.dataset.key = col.key;
-        th.addEventListener('click',(e)=> handleSortClick(col.key, e.shiftKey));
-      }
-
-      tr.appendChild(th);
-    });
-    stockHeader.appendChild(tr);
-
-    makeColumnsResizable();
-  }
-
-  function handleSortClick(key,isMulti){
-    let existing = currentSort.find(s=>s.key===key);
-    if(!isMulti) currentSort = [];
-
-    if(!existing){
-      currentSort.push({key,dir:1});
-    }else{
-      if(existing.dir===1){
-        existing.dir=-1;
-      }else{
-        currentSort = currentSort.filter(s=>s.key!==key);
-      }
-    }
-    applyFilterSort();
-    renderTable();
-    updateSortIndicators();
-  }
-
-  function updateSortIndicators(){
-    const ths = stockHeader.querySelectorAll('th');
-    ths.forEach(th=>{
-      const span = th.querySelector('.sort-indicator');
-      if(!span) return;
-      const key = th.dataset.key;
-      const s = currentSort.find(x=>x.key===key);
-      if(!s) span.textContent='';
-      else span.textContent = s.dir===1?'▲':'▼';
-    });
-  }
-
-  function makeColumnsResizable(){
-    const ths = document.querySelectorAll("#stockTable th");
-    ths.forEach(th => {
-      if(th.querySelector('.resizer')) return;
-      const resizer = document.createElement("div");
-      resizer.classList.add("resizer");
-      th.appendChild(resizer);
-
-      resizer.addEventListener("mousedown", startResize);
-
-      function startResize(e) {
-        e.preventDefault();
-        const startX = e.clientX;
-        const startWidth = th.offsetWidth;
-
-        function resize(ev) {
-          const newWidth = startWidth + (ev.clientX - startX);
-          th.style.width = newWidth + "px";
-        }
-        function stopResize() {
-          window.removeEventListener("mousemove", resize);
-          window.removeEventListener("mouseup", stopResize);
-        }
-        window.addEventListener("mousemove", resize);
-        window.addEventListener("mouseup", stopResize);
-      }
-    });
-  }
-
-  /* Render table */
-  function renderTable(){
-    stockBody.innerHTML='';
-    if(!viewRows.length){
-      stockCount.textContent='No matches.';
-      return;
-    }
-
-    viewRows.forEach(row=>{
-      const tr = document.createElement('tr');
-
-      const strength = computeStrength(row);
-      if(strength>=4) tr.classList.add('strong-row');
-      else if(strength>=2.5) tr.classList.add('moderate-row');
-      else tr.classList.add('weak-row');
-
-      COLS.forEach(col=>{
-        const td = document.createElement('td');
-
-        if(col.key==='star'){
-          td.classList.add('numeric');
-          const symKey=row.symbol.toUpperCase();
-          td.innerHTML = `<span class="star" data-symbol="${symKey}">${watchlist.has(symKey)?'★':'☆'}</span>`;
-        }else if(col.key==='symbol'){
-          td.textContent = row.symbol;
-          td.classList.add('symbol-cell');
-        }else{
-          const v = row[col.key];
-          if(v==null || v===''){
-            td.textContent='';
-          }else if(col.numeric){
-            td.classList.add('numeric');
-            td.textContent = Number.isFinite(v)?nf2.format(v):v;
-          }else{
-            td.textContent = v;
-          }
-
-          if(col.key==='pct' && v!=null){
-            if(v>0) td.classList.add('chg-pos');
-            if(v<0) td.classList.add('chg-neg');
-          }
-        }
-
-        tr.appendChild(td);
-      });
-
-      tr.addEventListener('click',(e)=>{
-        if(e.target && e.target.classList.contains('star')) return;
-        stockBody.querySelectorAll('tr').forEach(r=>r.classList.remove('selected-row'));
-        tr.classList.add('selected-row');
-        selectRow(row);
-      });
-
-      tr.addEventListener('dblclick',()=>{
-        openStockModal(row);
-      });
-
-      stockBody.appendChild(tr);
-    });
-
-    stockCount.textContent = `${viewRows.length} stock${viewRows.length===1?'':'s'} visible`;
-    stockBody.querySelectorAll('.star').forEach(st=>{
-      st.addEventListener('click',(e)=>{
-        e.stopPropagation();
-        const sym = st.dataset.symbol;
-        if(watchlist.has(sym)){
-          watchlist.delete(sym);
-          st.textContent='☆';
-          showToast('Removed from watchlist');
-        }else{
-          watchlist.add(sym);
-          st.textContent='★';
-          showToast('Added to watchlist');
-        }
-        persistWatchlist();
-      });
-    });
-
-    updateSortIndicators();
-  }
-
-  function autoSelectBest(){
-    if(!viewRows.length) return;
-    let best=viewRows[0];
-    for(const r of viewRows){
-      if((r.score||0)>(best.score||0)) best=r;
-    }
-    const idx = viewRows.indexOf(best);
-    if(idx>=0){
-      const tr = stockBody.children[idx];
-      if(tr){
-        stockBody.querySelectorAll('tr').forEach(r=>r.classList.remove('selected-row'));
-        tr.classList.add('selected-row');
-      }
-    }
-    selectRow(best);
-  }
-
-  /* Tabs */
-  tabs.forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const tabId = btn.dataset.tab;
-      tabs.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      tabPanes.forEach(p=>p.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-    });
-  });
-
-  /* Selection + analytics */
-  function selectRow(row){
-    selectedRow=row;
-    selectedLabel.textContent=`Selected: ${row.symbol}`;
-    updateDiagnosticBar(row);
-    renderIntraday(row);
-    renderSwing(row);
-    renderMomentum(row);
-    renderStrategy(row);
-    renderRisk(row);
-    updateWatchButton();
-  }
-
-  function classifyRSI(rsi){
-    if(rsi==null) return 'N/A';
-    if(rsi<30) return 'Oversold / Accumulation';
-    if(rsi<=60) return 'Healthy';
-    if(rsi<=70) return 'Strong';
-    return 'Overbought / Euphoria';
-  }
-
-  function detectSentiment(row){
-    const {pct,rsi,macd} = row;
-    let sentiment='Neutral';
-    if(macd!=null && macd>0 && pct!=null && pct>0) sentiment='Bullish';
-    if(macd!=null && macd<0 && pct!=null && pct<0) sentiment='Bearish';
-    if(rsi!=null){
-      if(rsi>70 && sentiment==='Bullish') sentiment='Neutral';
-      if(rsi<30 && sentiment==='Bearish') sentiment='Neutral';
-    }
-    return sentiment;
-  }
-  function detectTrend(row){
-    const {pct,macd} = row;
-    if(macd>0 && (pct==null || pct>=0)) return 'Up';
-    if(macd<0 && (pct==null || pct<=0)) return 'Down';
-    return 'Range';
-  }
-  function classifyVolume(volX){
-    if(volX==null) return 'Data NA';
-    if(volX>1.5) return 'High Volume';
-    if(volX>1.0) return 'Above Avg';
-    if(volX>0.7) return 'Normal';
-    return 'Low Volume';
-  }
-
-  function updateDiagnosticBar(row){
-    const sentiment = detectSentiment(row);
-    const trend     = detectTrend(row);
-    const rsiNote   = classifyRSI(row.rsi);
-    const volNote   = classifyVolume(row.volX);
-    const strength  = computeStrength(row);
-    const score     = row.score ?? 0;
-
-    diagnosticBar.innerHTML =
-      `<span class="tag ${sentiment==='Bullish'?'tag-bullish':sentiment==='Bearish'?'tag-bearish':'tag-neutral'}">${sentiment}</span>`+
-      `<span class="tag ${trend==='Up'?'tag-trend-up':trend==='Down'?'tag-trend-down':'tag-trend-range'}">Trend: ${trend}</span>`+
-      `<span class="tag tag-gray">AI Score: ${score}/100</span>`+
-      ` &nbsp; Momentum Strength: <b>${strength.toFixed(1)}/5</b> | `+
-      `RSI: <b>${row.rsi!=null?nf2.format(row.rsi):'NA'}</b> (${rsiNote}) | `+
-      `Volume: <b>${volNote}</b>`;
-  }
-
-  /* Level helpers (Hybrid C) */
-  function computeIntradayLevels(row){
+const fileInput      = document.getElementById('fileInput');
+const btnDemo        = document.getElementById('btnDemo');
+const btnTheme       = document.getElementById('btnTheme');
+const btnReset       = document.getElementById('btnReset');
+const searchInput    = document.getElementById('searchInput');
+const strengthFilter = document.getElementById('strengthFilter');
+
+const stockHeader = document.getElementById('stockHeader');
+const stockBody   = document.getElementById('stockBody');
+const stockCount  = document.getElementById('stockCount');
+
+const tabs        = document.querySelectorAll('.tabButton');
+const tabPanes    = document.querySelectorAll('.tabPane');
+
+const diagnosticBar  = document.getElementById('diagnosticBar');
+const selectedLabel  = document.getElementById('selectedLabel');
+const btnCopyPost    = document.getElementById('btnCopyPost');
+const btnToggleWatch = document.getElementById('btnToggleWatch');
+const toast          = document.getElementById('toast');
+
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalSymbol   = document.getElementById('modalSymbol');
+const modalSubtitle = document.getElementById('modalSubtitle');
+const modalBody     = document.getElementById('modalBody');
+const modalClose    = document.getElementById('modalClose');
+
+let allRows = [];
+let viewRows = [];
+let currentSort = []; // [{key, dir}]
+let selectedRow = null;
+let watchlist = new Set(JSON.parse(localStorage.getItem('stwp_watchlist_eq')||'[]'));
+
+const nf2 = new Intl.NumberFormat(undefined,{maximumFractionDigits:2});
+const nf0 = new Intl.NumberFormat(undefined,{maximumFractionDigits:0});
+
+const COLS = [
+{ label:'★',      key:'star',   numeric:false },
+{ label:'Symbol', key:'symbol', numeric:false },
+{ label:'Close',  key:'close',  numeric:true },
+{ label:'% Chg',  key:'pct',    numeric:true },
+{ label:'Vol X',  key:'volX',   numeric:true },
+{ label:'Volume', key:'volume', numeric:true },
+{ label:'RSI',    key:'rsi',    numeric:true },
+{ label:'MACD',   key:'macd',   numeric:true },
+{ label:'CCI',    key:'cci',    numeric:true },
+{ label:'Stoch',  key:'stoch',  numeric:true },
+{ label:'Entry',  key:'entry',  numeric:true },
+{ label:'SL',     key:'sl',     numeric:true },
+{ label:'T1',     key:'t1',     numeric:true },
+{ label:'T2',     key:'t2',     numeric:true },
+{ label:'Risk',   key:'risk',   numeric:true },
+{ label:'RR %',   key:'rrPct',  numeric:true },
+{ label:'P&L',    key:'pnl',    numeric:true },
+{ label:'AI Score', key:'score', numeric:true }
+];
+
+/* Theme toggle (default = dark) */
+const THEME_KEY = 'stwp_eq_theme';
+try{
+const t = localStorage.getItem(THEME_KEY);
+if(t){
+document.documentElement.setAttribute('data-theme', t);
+}else{
+document.documentElement.setAttribute('data-theme','dark');
+}
+}catch(e){}
+btnTheme.addEventListener('click', ()=>{
+const cur = document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';
+const next = cur==='dark'?'light':'dark';
+document.documentElement.setAttribute('data-theme', next);
+try{ localStorage.setItem(THEME_KEY,next); }catch(e){}
+});
+
+/* File handling */
+fileInput.addEventListener('change', (e)=>{
+const file = e.target.files[0];
+if(file) readFile(file);
+});
+
+function readFile(file){
+const reader = new FileReader();
+reader.onerror = ()=> alert('Failed to read file.');
+reader.onload = (e)=>{
+try{
+if(/\.csv$/i.test(file.name)){
+parseCSV(e.target.result);
+}else{
+parseSheet(new Uint8Array(e.target.result));
+}
+}catch(err){
+console.error(err);
+alert('Could not parse file. Check headers.');
+}
+};
+if(/\.csv$/i.test(file.name)) reader.readAsText(file);
+else reader.readAsArrayBuffer(file);
+}
+
+function parseSheet(arr){
+const wb = XLSX.read(arr,{type:'array'});
+const ws = wb.Sheets[wb.SheetNames[0]];
+const json = XLSX.utils.sheet_to_json(ws,{defval:''});
+processData(json);
+}
+
+function parseCSV(text){
+const rows = text.split(/\r?\n/).filter(Boolean);
+if(!rows.length) return;
+const parseLine = (line)=>{
+const out = []; let cur='', q=false;
+for(let i=0;i<line.length;i++){
+const ch=line[i];
+if(ch==='"'){ q=!q; continue; }
+if(ch===',' && !q){ out.push(cur); cur=''; }
+else cur+=ch;
+}
+out.push(cur);
+return out;
+};
+const headers = parseLine(rows[0]).map(h=>h.trim());
+const data = rows.slice(1).map(r=>{
+const cols = parseLine(r);
+const obj = {};
+headers.forEach((h,i)=>{ obj[h]=cols[i]||''; });
+return obj;
+});
+processData(data);
+}
+
+function toNum(val){
+if(val===null || val===undefined) return null;
+const s = String(val).replace(/[%,$\s]/g,'').replace(/,/g,'').trim();
+if(!s) return null;
+const n = parseFloat(s);
+return Number.isFinite(n)?n:null;
+}
+
+function processData(data){
+const out = [];
+const mapRow = (row)=>{
+const lc={};
+Object.keys(row).forEach(k=>{
+lc[k.toLowerCase().replace(/\s+/g,'')] = row[k];
+});
+
+const symbol = row.Symbol || row.symbol || lc['symbol'] || '';
+if(!symbol) return null;
+
+const close = toNum(row.Close ?? lc['close']);
+const pct   = toNum(row['% change'] ?? row.PercentChange ?? lc['%change'] ?? lc['percentchange']);
+const volume= toNum(row.Volume ?? lc['volume']);
+const volX  = toNum(row['Vol x'] ?? row.VolX ?? lc['volx']);
+const rsi   = toNum(row.RSI ?? lc['rsi']);
+const macd  = toNum(row.MACD ?? lc['macd']);
+const cci   = toNum(row.CCI ?? lc['cci']);
+const stoch = toNum(row.Stochastic ?? lc['stochastic']);
+const entry = toNum(row.Entry ?? row['Go Long Above'] ?? lc['entry'] ?? lc['golongabove']);
+const sl    = toNum(row['Stop Loss'] ?? row.StopLoss ?? lc['stoploss']);
+let t1      = toNum(row.Target1 ?? lc['target1']);
+let t2      = toNum(row.Target2 ?? lc['target2']);
+let risk    = toNum(row.Risk ?? lc['risk']);
+let rrPct   = toNum(row.RiskRewardPct ?? lc['riskrewardpct']);
+const pnl   = toNum(row.PotentialPL ?? lc['potentialpl']);
+const sector= row.Sector || lc['sector'] || '';
+
+if(entry!=null && sl!=null){
+const R = Math.max(0.01, entry-sl);
+if(risk==null) risk = R;
+if(!t1) t1 = entry + R;
+if(!t2) t2 = entry + 2*R;
+if(rrPct==null && close!=null && close>0){
+rrPct = ((close - sl)/close)*100;
+}
+}
+
+const score = computeAIScore({pct,volX,rsi,macd,rrPct});
+
+return {
+raw:row,
+symbol,
+close,
+pct,
+volume,
+volX,
+rsi,
+macd,
+cci,
+stoch,
+entry,
+sl,
+t1,
+t2,
+risk,
+rrPct,
+pnl,
+sector,
+score
+};
+};
+
+data.forEach(r=>{
+const m = mapRow(r);
+if(m) out.push(m);
+});
+
+allRows = out;
+applyFilterSort();
+buildHeader();
+renderTable();
+autoSelectBest();
+showToast('Loaded '+out.length+' stocks');
+}
+
+/* AI score */
+function computeAIScore(o){
+let s = 50;
+if(o.pct!=null){
+if(o.pct>3) s+=15;
+else if(o.pct>0) s+=5;
+else if(o.pct<-3) s-=10;
+else if(o.pct<0) s-=3;
+}
+if(o.volX!=null){
+if(o.volX>1.5) s+=15;
+else if(o.volX>1.0) s+=8;
+else if(o.volX<0.6) s-=5;
+}
+if(o.rsi!=null){
+if(o.rsi>=40 && o.rsi<=60) s+=10;
+else if(o.rsi>70) s-=10;
+else if(o.rsi<30) s-=5;
+}
+if(o.macd!=null){
+if(o.macd>0) s+=8;
+else if(o.macd<0) s-=8;
+}
+if(o.rrPct!=null){
+if(o.rrPct>=2) s+=5;
+if(o.rrPct<-3) s-=8;
+}
+return Math.max(0,Math.min(100,Math.round(s)));
+}
+
+/* Strength score 0–5 */
+function computeStrength(row){
+let s=0;
+const {pct,volX,rsi,macd,score} = row;
+if(pct!=null){
+if(pct>3) s+=2;
+else if(pct>0) s+=1;
+else if(pct<-3) s-=2;
+else if(pct<0) s-=1;
+}
+if(volX!=null){
+if(volX>1.5) s+=2;
+else if(volX>1.0) s+=1;
+else if(volX<0.6) s-=1;
+}
+if(rsi!=null){
+if(rsi>=40 && rsi<=60) s+=1.5;
+else if(rsi>70) s-=1;
+else if(rsi<30) s-=0.5;
+}
+if(macd!=null){
+if(macd>0) s+=1;
+else if(macd<0) s-=1;
+}
+if(score>=70) s+=0.5;
+if(score<=30) s-=0.5;
+
+const norm = Math.max(0,Math.min(5,((s+6)/12)*5));
+return norm;
+}
+
+/* Strength band classifier for filter */
+function classifyStrengthBand(row){
+const st = computeStrength(row);
+if(st >= 4) return 'strong';
+if(st >= 2.5) return 'moderate';
+return 'weak';
+}
+
+/* Filter + search + strength filter */
+function applyFilterSort(){
+const q = searchInput.value.trim().toUpperCase();
+const strengthSel = (strengthFilter.value || 'all').toLowerCase();
+let rows = [...allRows];
+
+/* Strength band filter first */
+if(strengthSel !== 'all'){
+rows = rows.filter(r => classifyStrengthBand(r) === strengthSel);
+}
+
+/* Search / numeric filters */
+if(q){
+const query = q.replace(/\s+/g,'');
+const match = query.match(/^(RSI|VOLX|%CHG|PCT)([><]=?)(-?\d+(\.\d+)?)$/i);
+if(match){
+const field = match[1].toUpperCase();
+const op    = match[2];
+const val   = parseFloat(match[3]);
+rows = rows.filter(r=>{
+let v=null;
+if(field==='RSI') v=r.rsi;
+else if(field==='VOLX') v=r.volX;
+else if(field==='%CHG' || field==='PCT') v=r.pct;
+if(v==null) return false;
+if(op==='>') return v>val;
+if(op==='>=')return v>=val;
+if(op==='<') return v<val;
+if(op==='<=')return v<=val;
+return false;
+});
+}else{
+rows = rows.filter(r=> r.symbol.toUpperCase().includes(q));
+}
+}
+
+if(currentSort.length){
+rows.sort((a,b)=>{
+for(const s of currentSort){
+const ka=s.key;
+let va=a[ka], vb=b[ka];
+if(va==null && vb==null) continue;
+if(va==null) return 1;
+if(vb==null) return -1;
+if(typeof va==='string'){
+const cmp = va.localeCompare(vb);
+if(cmp!==0) return cmp * s.dir;
+}else{
+if(va<vb) return -1*s.dir;
+if(va>vb) return 1*s.dir;
+}
+}
+return 0;
+});
+}
+
+viewRows = rows;
+}
+
+searchInput.addEventListener('input', ()=>{
+applyFilterSort();
+renderTable();
+});
+
+strengthFilter.addEventListener('change', ()=>{
+applyFilterSort();
+renderTable();
+});
+
+/* Header + sorting + resizer */
+function buildHeader(){
+stockHeader.innerHTML='';
+const tr = document.createElement('tr');
+
+COLS.forEach(col=>{
+const th = document.createElement('th');
+th.textContent = col.label;
+
+if(col.key==='symbol'){
+th.classList.add('symbol-col');
+}
+
+if(col.key!=='star'){
+const span = document.createElement('span');
+span.className='sort-indicator';
+span.textContent='';
+th.appendChild(span);
+th.dataset.key = col.key;
+th.addEventListener('click',(e)=> handleSortClick(col.key, e.shiftKey));
+}
+
+tr.appendChild(th);
+});
+stockHeader.appendChild(tr);
+
+makeColumnsResizable();
+}
+
+function handleSortClick(key,isMulti){
+let existing = currentSort.find(s=>s.key===key);
+if(!isMulti) currentSort = [];
+
+if(!existing){
+currentSort.push({key,dir:1});
+}else{
+if(existing.dir===1){
+existing.dir=-1;
+}else{
+currentSort = currentSort.filter(s=>s.key!==key);
+}
+}
+applyFilterSort();
+renderTable();
+updateSortIndicators();
+}
+
+function updateSortIndicators(){
+const ths = stockHeader.querySelectorAll('th');
+ths.forEach(th=>{
+const span = th.querySelector('.sort-indicator');
+if(!span) return;
+const key = th.dataset.key;
+const s = currentSort.find(x=>x.key===key);
+if(!s) span.textContent='';
+else span.textContent = s.dir===1?'▲':'▼';
+});
+}
+
+function makeColumnsResizable(){
+const ths = document.querySelectorAll("#stockTable th");
+ths.forEach(th => {
+if(th.querySelector('.resizer')) return;
+const resizer = document.createElement("div");
+resizer.classList.add("resizer");
+th.appendChild(resizer);
+
+resizer.addEventListener("mousedown", startResize);
+
+function startResize(e) {
+e.preventDefault();
+const startX = e.clientX;
+const startWidth = th.offsetWidth;
+
+function resize(ev) {
+const newWidth = startWidth + (ev.clientX - startX);
+th.style.width = newWidth + "px";
+}
+function stopResize() {
+window.removeEventListener("mousemove", resize);
+window.removeEventListener("mouseup", stopResize);
+}
+window.addEventListener("mousemove", resize);
+window.addEventListener("mouseup", stopResize);
+}
+});
+}
+
+/* Render table */
+function renderTable(){
+stockBody.innerHTML='';
+if(!viewRows.length){
+stockCount.textContent='No matches.';
+return;
+}
+
+viewRows.forEach(row=>{
+const tr = document.createElement('tr');
+
+const strength = computeStrength(row);
+if(strength>=4) tr.classList.add('strong-row');
+else if(strength>=2.5) tr.classList.add('moderate-row');
+else tr.classList.add('weak-row');
+
+COLS.forEach(col=>{
+const td = document.createElement('td');
+
+if(col.key==='star'){
+td.classList.add('numeric');
+const symKey=row.symbol.toUpperCase();
+td.innerHTML = `<span class="star" data-symbol="${symKey}">${watchlist.has(symKey)?'★':'☆'}</span>`;
+}else if(col.key==='symbol'){
+td.textContent = row.symbol;
+td.classList.add('symbol-cell');
+}else{
+const v = row[col.key];
+if(v==null || v===''){
+td.textContent='';
+}else if(col.numeric){
+td.classList.add('numeric');
+td.textContent = Number.isFinite(v)?nf2.format(v):v;
+}else{
+td.textContent = v;
+}
+
+if(col.key==='pct' && v!=null){
+if(v>0) td.classList.add('chg-pos');
+if(v<0) td.classList.add('chg-neg');
+}
+}
+
+tr.appendChild(td);
+});
+
+tr.addEventListener('click',(e)=>{
+if(e.target && e.target.classList.contains('star')) return;
+stockBody.querySelectorAll('tr').forEach(r=>r.classList.remove('selected-row'));
+tr.classList.add('selected-row');
+selectRow(row);
+});
+
+tr.addEventListener('dblclick',()=>{
+openStockModal(row);
+});
+
+stockBody.appendChild(tr);
+});
+
+stockCount.textContent = `${viewRows.length} stock${viewRows.length===1?'':'s'} visible`;
+stockBody.querySelectorAll('.star').forEach(st=>{
+st.addEventListener('click',(e)=>{
+e.stopPropagation();
+const sym = st.dataset.symbol;
+if(watchlist.has(sym)){
+watchlist.delete(sym);
+st.textContent='☆';
+showToast('Removed from watchlist');
+}else{
+watchlist.add(sym);
+st.textContent='★';
+showToast('Added to watchlist');
+}
+persistWatchlist();
+});
+});
+
+updateSortIndicators();
+}
+
+function autoSelectBest(){
+if(!viewRows.length) return;
+let best=viewRows[0];
+for(const r of viewRows){
+if((r.score||0)>(best.score||0)) best=r;
+}
+const idx = viewRows.indexOf(best);
+if(idx>=0){
+const tr = stockBody.children[idx];
+if(tr){
+stockBody.querySelectorAll('tr').forEach(r=>r.classList.remove('selected-row'));
+tr.classList.add('selected-row');
+}
+}
+selectRow(best);
+}
+
+/* Tabs */
+tabs.forEach(btn=>{
+btn.addEventListener('click',()=>{
+const tabId = btn.dataset.tab;
+tabs.forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+tabPanes.forEach(p=>p.classList.remove('active'));
+document.getElementById(tabId).classList.add('active');
+});
+});
+
+/* Selection + analytics */
+function selectRow(row){
+selectedRow=row;
+selectedLabel.textContent=`Selected: ${row.symbol}`;
+updateDiagnosticBar(row);
+renderIntraday(row);
+renderSwing(row);
+renderMomentum(row);
+renderStrategy(row);
+renderRisk(row);
+updateWatchButton();
+}
+
+function classifyRSI(rsi){
+if(rsi==null) return 'N/A';
+if(rsi<30) return 'Oversold / Accumulation';
+if(rsi<=60) return 'Healthy';
+if(rsi<=70) return 'Strong';
+return 'Overbought / Euphoria';
+}
+
+function detectSentiment(row){
+const {pct,rsi,macd} = row;
+let sentiment='Neutral';
+if(macd!=null && macd>0 && pct!=null && pct>0) sentiment='Bullish';
+if(macd!=null && macd<0 && pct!=null && pct<0) sentiment='Bearish';
+if(rsi!=null){
+if(rsi>70 && sentiment==='Bullish') sentiment='Neutral';
+if(rsi<30 && sentiment==='Bearish') sentiment='Neutral';
+}
+return sentiment;
+}
+function detectTrend(row){
+const {pct,macd} = row;
+if(macd>0 && (pct==null || pct>=0)) return 'Up';
+if(macd<0 && (pct==null || pct<=0)) return 'Down';
+return 'Range';
+}
+function classifyVolume(volX){
+if(volX==null) return 'Data NA';
+if(volX>1.5) return 'High Volume';
+if(volX>1.0) return 'Above Avg';
+if(volX>0.7) return 'Normal';
+return 'Low Volume';
+}
+
+function updateDiagnosticBar(row){
+const sentiment = detectSentiment(row);
+const trend     = detectTrend(row);
+const rsiNote   = classifyRSI(row.rsi);
+const volNote   = classifyVolume(row.volX);
+const strength  = computeStrength(row);
+const score     = row.score ?? 0;
+
+diagnosticBar.innerHTML =
+`<span class="tag ${sentiment==='Bullish'?'tag-bullish':sentiment==='Bearish'?'tag-bearish':'tag-neutral'}">${sentiment}</span>`+
+`<span class="tag ${trend==='Up'?'tag-trend-up':trend==='Down'?'tag-trend-down':'tag-trend-range'}">Trend: ${trend}</span>`+
+`<span class="tag tag-gray">AI Score: ${score}/100</span>`+
+` &nbsp; Momentum Strength: <b>${strength.toFixed(1)}/5</b> | `+
+`RSI: <b>${row.rsi!=null?nf2.format(row.rsi):'NA'}</b> (${rsiNote}) | `+
+`Volume: <b>${volNote}</b>`;
+}
+
+/* Level helpers (Hybrid C) */
+function computeIntradayLevels(row){
 
 const entry = row.entry ?? row.close ?? 0;
 if(!entry) return {entry:0,sl:0,t1:0,t2:0,R:0};
@@ -1435,451 +1435,452 @@ const t2 = entry + (2 * R);
 return {entry, sl, t1, t2, R};
 }
 
-  function computeSwingLevels(row){
-    const baseEntry = row.entry ?? row.close ?? 0;
-    if(!baseEntry) return {entry:0,sl:0,t1:0,t2:0,R:0};
-    const slBase = row.sl ?? baseEntry*0.97;
-    const baseR  = Math.max(0.01, baseEntry-slBase);
+function computeSwingLevels(row){
+const baseEntry = row.entry ?? row.close ?? 0;
+if(!baseEntry) return {entry:0,sl:0,t1:0,t2:0,R:0};
+const slBase = row.sl ?? baseEntry*0.97;
+const baseR  = Math.max(0.01, baseEntry-slBase);
 
-    const volAdj = row.volX!=null ? Math.min(Math.max(row.volX,0.6),2) : 1;
-    const rsiAdj = row.rsi!=null ? (
-      row.rsi<35 ? 0.9 :
-      row.rsi>70 ? 1.2 : 1
-    ) : 1;
+const volAdj = row.volX!=null ? Math.min(Math.max(row.volX,0.6),2) : 1;
+const rsiAdj = row.rsi!=null ? (
+row.rsi<35 ? 0.9 :
+row.rsi>70 ? 1.2 : 1
+) : 1;
 
-    const swingR = baseR * (1.2*volAdj*rsiAdj);
-    const sl     = baseEntry - swingR;
-    const t1     = baseEntry + swingR*2;
-    const t2     = baseEntry + swingR*3.5;
+const swingR = baseR * (1.2*volAdj*rsiAdj);
+const sl     = baseEntry - swingR;
+const t1     = baseEntry + swingR*2;
+const t2     = baseEntry + swingR*3.5;
 
-    return {entry:baseEntry,sl,t1,t2,R:swingR};
-  }
+return {entry:baseEntry,sl,t1,t2,R:swingR};
+}
 
-  /* Outlook calculator for both UI + post */
-  function getOutlook(row){
-    const strength = computeStrength(row);
-    const trend = detectTrend(row);
-    const R = computeIntradayLevels(row).R || 0.5;
+/* Outlook calculator for both UI + post */
+function getOutlook(row){
+const strength = computeStrength(row);
+const trend = detectTrend(row);
+const R = computeIntradayLevels(row).R || 0.5;
 
-    // Momentum category
-    let momentum = "Neutral";
-    if(strength >= 4) momentum = "Strong";
-    else if(strength >= 2.5) momentum = "Moderate";
-    else momentum = "Weak";
+// Momentum category
+let momentum = "Neutral";
+if(strength >= 4) momentum = "Strong";
+else if(strength >= 2.5) momentum = "Moderate";
+else momentum = "Weak";
 
-    // Risk category based on R
-    let risk = "Moderate";
-    if(R <= 0.7) risk = "Low";
-    else if(R >= 1.5) risk = "High";
+// Risk category based on R
+let risk = "Moderate";
+if(R <= 0.7) risk = "Low";
+else if(R >= 1.5) risk = "High";
 
-    // Volume category
-    let volume = "Moderate";
-    if(row.volX > 1.5) volume = "High";
-    else if(row.volX < 0.8) volume = "Low";
+// Volume category
+let volume = "Moderate";
+if(row.volX > 1.5) volume = "High";
+else if(row.volX < 0.8) volume = "Low";
 
-    return { momentum, trend, risk, volume };
-  }
+return { momentum, trend, risk, volume };
+}
 
-  function buildFinalOutlook(row){
-    const o = getOutlook(row);
-    return `
-      <div class="sectionTitle">Final Outlook</div>
-      <ul class="compact">
-        <li><b>Momentum:</b> ${o.momentum}</li>
-        <li><b>Trend:</b> ${o.trend}</li>
-        <li><b>Risk:</b> ${o.risk}</li>
-        <li><b>Volume:</b> ${o.volume}</li>
-      </ul>
-    `;
-  }
+function buildFinalOutlook(row){
+const o = getOutlook(row);
+return `
+<div class="sectionTitle">Final Outlook</div>
+<ul class="compact">
+<li><b>Momentum:</b> ${o.momentum}</li>
+<li><b>Trend:</b> ${o.trend}</li>
+<li><b>Risk:</b> ${o.risk}</li>
+<li><b>Volume:</b> ${o.volume}</li>
+</ul>
+`;
+}
 
-  /* Pane renderers */
-  function renderIntraday(row){
-    const pane = document.getElementById('intradayTab');
-    const sentiment = detectSentiment(row);
-    const trend     = detectTrend(row);
-    const lv        = computeIntradayLevels(row);
+/* Pane renderers */
+function renderIntraday(row){
+const pane = document.getElementById('intradayTab');
+const sentiment = detectSentiment(row);
+const trend     = detectTrend(row);
+const lv        = computeIntradayLevels(row);
 
-    pane.innerHTML = `
-      <div class="kpiGrid">
-        <div class="kpi">
-          <b>Entry (Intraday)</b>
-          <div class="val">${lv.entry?nf2.format(lv.entry):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Stop Loss</b>
-          <div class="val">${lv.sl?nf2.format(lv.sl):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Target 1</b>
-          <div class="val">${lv.t1?nf2.format(lv.t1):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Target 2</b>
-          <div class="val">${lv.t2?nf2.format(lv.t2):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>R (per unit)</b>
-          <div class="val">${lv.R?nf2.format(lv.R):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Intraday View</b>
-          <div class="val">${sentiment} / ${trend}</div>
-        </div>
-      </div>
+pane.innerHTML = `
+<div class="kpiGrid">
+<div class="kpi">
+<b>Entry (Intraday)</b>
+<div class="val">${lv.entry?nf2.format(lv.entry):'-'}</div>
+</div>
+<div class="kpi">
+<b>Stop Loss</b>
+<div class="val">${lv.sl?nf2.format(lv.sl):'-'}</div>
+</div>
+<div class="kpi">
+<b>Target 1</b>
+<div class="val">${lv.t1?nf2.format(lv.t1):'-'}</div>
+</div>
+<div class="kpi">
+<b>Target 2</b>
+<div class="val">${lv.t2?nf2.format(lv.t2):'-'}</div>
+</div>
+<div class="kpi">
+<b>R (per unit)</b>
+<div class="val">${lv.R?nf2.format(lv.R):'-'}</div>
+</div>
+<div class="kpi">
+<b>Intraday View</b>
+<div class="val">${sentiment} / ${trend}</div>
+</div>
+</div>
 
-      <div class="sectionTitle">STWP Intraday View (Narrative)</div>
-      <ul class="compact">
-        <li>Bias: <b>${sentiment}</b> with a <b>${trend}</b> intraday structure.</li>
-        <li>Designed for 1–2R opportunities with strict SL and controlled position size.</li>
-        <li>Focus on clean breakouts or VWAP retests in the direction of bias.</li>
-        <li>One or two planned trades are enough – avoid chasing every tick.</li>
-      </ul>
-    `;
-  }
+<div class="sectionTitle">STWP Intraday View (Narrative)</div>
+<ul class="compact">
+<li>Bias: <b>${sentiment}</b> with a <b>${trend}</b> intraday structure.</li>
+<li>Designed for 1–2R opportunities with strict SL and controlled position size.</li>
+<li>Focus on clean breakouts or VWAP retests in the direction of bias.</li>
+<li>One or two planned trades are enough – avoid chasing every tick.</li>
+</ul>
+`;
+}
 
-  function renderSwing(row){
-    const pane = document.getElementById('swingTab');
-    const sentiment = detectSentiment(row);
-    const trend     = detectTrend(row);
-    const lv        = computeSwingLevels(row);
+function renderSwing(row){
+const pane = document.getElementById('swingTab');
+const sentiment = detectSentiment(row);
+const trend     = detectTrend(row);
+const lv        = computeSwingLevels(row);
 
-    pane.innerHTML = `
-      <div class="kpiGrid">
-        <div class="kpi">
-          <b>Entry (Swing)</b>
-          <div class="val">${lv.entry?nf2.format(lv.entry):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Stop Loss (Hybrid)</b>
-          <div class="val">${lv.sl?nf2.format(lv.sl):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Target 1 (2R)</b>
-          <div class="val">${lv.t1?nf2.format(lv.t1):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Target 2 (3.5R)</b>
-          <div class="val">${lv.t2?nf2.format(lv.t2):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Adjusted R (Swing)</b>
-          <div class="val">${lv.R?nf2.format(lv.R):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Swing Bias</b>
-          <div class="val">${sentiment} / ${trend}</div>
-        </div>
-      </div>
+pane.innerHTML = `
+<div class="kpiGrid">
+<div class="kpi">
+<b>Entry (Swing)</b>
+<div class="val">${lv.entry?nf2.format(lv.entry):'-'}</div>
+</div>
+<div class="kpi">
+<b>Stop Loss (Hybrid)</b>
+<div class="val">${lv.sl?nf2.format(lv.sl):'-'}</div>
+</div>
+<div class="kpi">
+<b>Target 1 (2R)</b>
+<div class="val">${lv.t1?nf2.format(lv.t1):'-'}</div>
+</div>
+<div class="kpi">
+<b>Target 2 (3.5R)</b>
+<div class="val">${lv.t2?nf2.format(lv.t2):'-'}</div>
+</div>
+<div class="kpi">
+<b>Adjusted R (Swing)</b>
+<div class="val">${lv.R?nf2.format(lv.R):'-'}</div>
+</div>
+<div class="kpi">
+<b>Swing Bias</b>
+<div class="val">${sentiment} / ${trend}</div>
+</div>
+</div>
 
-      <div class="sectionTitle">STWP Swing Trade Notes (Hybrid Model)</div>
-      <ul class="compact">
-        <li>2–5 day horizon with risk calibrated to volatility and RSI placement.</li>
-        <li>Partial booking at first target helps lock in reward while keeping conviction.</li>
-        <li>Check sector and index structure – swing trades work best with broader alignment.</li>
-        <li>Avoid loading fresh swing risk just before major events or after one-way moves.</li>
-      </ul>
-    `;
-  }
+<div class="sectionTitle">STWP Swing Trade Notes (Hybrid Model)</div>
+<ul class="compact">
+<li>2–5 day horizon with risk calibrated to volatility and RSI placement.</li>
+<li>Partial booking at first target helps lock in reward while keeping conviction.</li>
+<li>Check sector and index structure – swing trades work best with broader alignment.</li>
+<li>Avoid loading fresh swing risk just before major events or after one-way moves.</li>
+</ul>
+`;
+}
 
-  function renderMomentum(row){
-    const pane = document.getElementById('momentumTab');
-    const {pct,volX,rsi,macd,cci,stoch} = row;
+function renderMomentum(row){
+const pane = document.getElementById('momentumTab');
+const {pct,volX,rsi,macd,cci,stoch} = row;
 
-    const bullets = [];
-    if(pct!=null){
-      if(pct>3) bullets.push('Strong positive day – continuation candidates on watch.');
-      else if(pct>0) bullets.push('Positive close – constructive if backed by volume.');
-      else if(pct<-3) bullets.push('Sharp negative move – supply dominant, respect weakness.');
-    }
-    if(volX!=null){
-      if(volX>1.5) bullets.push('Volume significantly above normal – strong participation, often institutional.');
-      else if(volX>1.0) bullets.push('Volume above average – healthy interest.');
-      else bullets.push('Volume subdued – avoid oversized trades.');
-    }
-    if(rsi!=null){
-      const rsNote = classifyRSI(rsi);
-      bullets.push(`RSI status: ${rsNote}.`);
-    }
-    if(macd!=null){
-      bullets.push(`MACD is ${macd>0?'above':'below'} zero-line, guiding medium-term bias.`);
-    }
-    if(cci!=null){
-      if(cci>100) bullets.push('CCI elevated – short-term overbought / momentum stretch.');
-      else if(cci<-100) bullets.push('CCI depressed – possible exhaustion / accumulation zone.');
-    }
+const bullets = [];
+if(pct!=null){
+if(pct>3) bullets.push('Strong positive day – continuation candidates on watch.');
+else if(pct>0) bullets.push('Positive close – constructive if backed by volume.');
+else if(pct<-3) bullets.push('Sharp negative move – supply dominant, respect weakness.');
+}
+if(volX!=null){
+if(volX>1.5) bullets.push('Volume significantly above normal – strong participation, often institutional.');
+else if(volX>1.0) bullets.push('Volume above average – healthy interest.');
+else bullets.push('Volume subdued – avoid oversized trades.');
+}
+if(rsi!=null){
+const rsNote = classifyRSI(rsi);
+bullets.push(`RSI status: ${rsNote}.`);
+}
+if(macd!=null){
+bullets.push(`MACD is ${macd>0?'above':'below'} zero-line, guiding medium-term bias.`);
+}
+if(cci!=null){
+if(cci>100) bullets.push('CCI elevated – short-term overbought / momentum stretch.');
+else if(cci<-100) bullets.push('CCI depressed – possible exhaustion / accumulation zone.');
+}
 
-    pane.innerHTML = `
-      <div class="kpiGrid">
-        <div class="kpi"><b>% Change</b><div class="val">${pct!=null?nf2.format(pct)+'%':'-'}</div></div>
-        <div class="kpi"><b>Vol X</b><div class="val">${volX!=null?nf2.format(volX):'-'}</div></div>
-        <div class="kpi"><b>RSI</b><div class="val">${rsi!=null?nf2.format(rsi):'-'}</div></div>
-        <div class="kpi"><b>MACD</b><div class="val">${macd!=null?nf2.format(macd):'-'}</div></div>
-        <div class="kpi"><b>CCI</b><div class="val">${cci!=null?nf0.format(cci):'-'}</div></div>
-        <div class="kpi"><b>Stochastic</b><div class="val">${stoch!=null?nf0.format(stoch):'-'}</div></div>
-      </div>
+pane.innerHTML = `
+<div class="kpiGrid">
+<div class="kpi"><b>% Change</b><div class="val">${pct!=null?nf2.format(pct)+'%':'-'}</div></div>
+<div class="kpi"><b>Vol X</b><div class="val">${volX!=null?nf2.format(volX):'-'}</div></div>
+<div class="kpi"><b>RSI</b><div class="val">${rsi!=null?nf2.format(rsi):'-'}</div></div>
+<div class="kpi"><b>MACD</b><div class="val">${macd!=null?nf2.format(macd):'-'}</div></div>
+<div class="kpi"><b>CCI</b><div class="val">${cci!=null?nf0.format(cci):'-'}</div></div>
+<div class="kpi"><b>Stochastic</b><div class="val">${stoch!=null?nf0.format(stoch):'-'}</div></div>
+</div>
 
-      <div class="sectionTitle">Momentum & Volume Observations</div>
-      <ul class="compact">
-        ${bullets.map(b=>`<li>${b}</li>`).join('') || '<li>Insufficient data to comment on momentum.</li>'}
-      </ul>
-    `;
-  }
+<div class="sectionTitle">Momentum & Volume Observations</div>
+<ul class="compact">
+${bullets.map(b=>`<li>${b}</li>`).join('') || '<li>Insufficient data to comment on momentum.</li>'}
+</ul>
+`;
+}
 
-  function renderStrategy(row){
-    const pane = document.getElementById('strategyTab');
-    const sentiment = detectSentiment(row);
-    const trend     = detectTrend(row);
-    const {rsi,volX,pct,sector} = row;
+function renderStrategy(row){
+const pane = document.getElementById('strategyTab');
+const sentiment = detectSentiment(row);
+const trend     = detectTrend(row);
+const {rsi,volX,pct,sector} = row;
 
-    let title;
-    const points = [];
+let title;
+const points = [];
 
-    if(sentiment==='Bullish'){
-      title='Bullish Bias – Trend-Follow Playbook';
-      points.push('Look for pullbacks to support and clean breakouts from tight ranges.');
-      points.push('Trail stops under recent swing lows / dynamic supports instead of fixed points.');
-    }else if(sentiment==='Bearish'){
-      title='Bearish Bias – Short / Avoid Framework';
-      points.push('Shorts work better after failed rallies or lower-high patterns.');
-      points.push('Investors can wait for structure to repair before adding heavy fresh exposure.');
-    }else{
-      title='Neutral / Balance – Patience Mode';
-      points.push('Treat as a watchlist candidate till range breaks one side decisively.');
-      points.push('Range trades need clearly defined edges and tight exits.');
-    }
+if(sentiment==='Bullish'){
+title='Bullish Bias – Trend-Follow Playbook';
+points.push('Look for pullbacks to support and clean breakouts from tight ranges.');
+points.push('Trail stops under recent swing lows / dynamic supports instead of fixed points.');
+}else if(sentiment==='Bearish'){
+title='Bearish Bias – Short / Avoid Framework';
+points.push('Shorts work better after failed rallies or lower-high patterns.');
+points.push('Investors can wait for structure to repair before adding heavy fresh exposure.');
+}else{
+title='Neutral / Balance – Patience Mode';
+points.push('Treat as a watchlist candidate till range breaks one side decisively.');
+points.push('Range trades need clearly defined edges and tight exits.');
+}
 
-    if(rsi!=null && rsi>70) points.push('RSI elevated – fresh longs have compressed reward-to-risk.');
-    if(rsi!=null && rsi<30) points.push('RSI washed out – better to wait for strength rather than catching a falling knife.');
-    if(volX!=null && volX>1.5 && pct!=null && Math.abs(pct)>3){
-      points.push('High volume + wide bar – volatility is elevated; use smaller size and staggered entries/exits.');
-    }
+if(rsi!=null && rsi>70) points.push('RSI elevated – fresh longs have compressed reward-to-risk.');
+if(rsi!=null && rsi<30) points.push('RSI washed out – better to wait for strength rather than catching a falling knife.');
+if(volX!=null && volX>1.5 && pct!=null && Math.abs(pct)>3){
+points.push('High volume + wide bar – volatility is elevated; use smaller size and staggered entries/exits.');
+}
 
-    pane.innerHTML = `
-      <div class="sectionTitle">${title}</div>
-      <ul class="compact">
-        ${points.map(p=>`<li>${p}</li>`).join('')}
-      </ul>
+pane.innerHTML = `
+<div class="sectionTitle">${title}</div>
+<ul class="compact">
+${points.map(p=>`<li>${p}</li>`).join('')}
+</ul>
 
-      <div class="sectionTitle">Context Notes</div>
-      <ul class="compact">
-        <li>Sector: <b>${sector||'Not provided'}</b> – align with sector and index structure before final decision.</li>
-        <li>Blend this with your own timeframe, risk tolerance and capital plan.</li>
-      </ul>
-      ${buildFinalOutlook(row)}
-    `;
-  }
+<div class="sectionTitle">Context Notes</div>
+<ul class="compact">
+<li>Sector: <b>${sector||'Not provided'}</b> – align with sector and index structure before final decision.</li>
+<li>Blend this with your own timeframe, risk tolerance and capital plan.</li>
+</ul>
+${buildFinalOutlook(row)}
+`;
+}
 
-  function renderRisk(row){
-    const pane = document.getElementById('riskTab');
-    const lvIntra = computeIntradayLevels(row);
-    const acct = 100000;
-    const perTradeRiskPct = 1;
-    const perTradeRisk = acct*(perTradeRiskPct/100);
-    const R = lvIntra.R || 1;
-    const posSize = Math.max(1,Math.floor(perTradeRisk/R));
-    const maxLoss = posSize*R;
+function renderRisk(row){
+const pane = document.getElementById('riskTab');
+const lvIntra = computeIntradayLevels(row);
+const acct = 100000;
+const perTradeRiskPct = 1;
+const perTradeRisk = acct*(perTradeRiskPct/100);
+const R = lvIntra.R || 1;
+const posSize = Math.max(1,Math.floor(perTradeRisk/R));
+const maxLoss = posSize*R;
 
-    pane.innerHTML = `
-      <div class="kpiGrid">
-        <div class="kpi">
-          <b>Per Unit Risk (Intraday)</b>
-          <div class="val">${lvIntra.R?nf2.format(lvIntra.R):'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>Size @1% on 100000</b>
-          <div class="val">${nf0.format(posSize)}</div>
-        </div>
-        <div class="kpi">
-          <b>Max Loss (approx units)</b>
-          <div class="val">${nf2.format(maxLoss)}</div>
-        </div>
-        <div class="kpi">
-          <b>Risk/Reward%</b>
-          <div class="val">${row.rrPct!=null?nf2.format(row.rrPct)+'%':'-'}</div>
-        </div>
-        <div class="kpi">
-          <b>AI Score</b>
-          <div class="val">${row.score!=null?row.score+'/100':'-'}</div>
-        </div>
-      </div>
+pane.innerHTML = `
+<div class="kpiGrid">
+<div class="kpi">
+<b>Per Unit Risk (Intraday)</b>
+<div class="val">${lvIntra.R?nf2.format(lvIntra.R):'-'}</div>
+</div>
+<div class="kpi">
+<b>Size @1% on 100000</b>
+<div class="val">${nf0.format(posSize)}</div>
+</div>
+<div class="kpi">
+<b>Max Loss (approx units)</b>
+<div class="val">${nf2.format(maxLoss)}</div>
+</div>
+<div class="kpi">
+<b>Risk/Reward%</b>
+<div class="val">${row.rrPct!=null?nf2.format(row.rrPct)+'%':'-'}</div>
+</div>
+<div class="kpi">
+<b>AI Score</b>
+<div class="val">${row.score!=null?row.score+'/100':'-'}</div>
+</div>
+</div>
 
-      <div class="sectionTitle">STWP Risk Notes</div>
-      <ul class="compact">
-        <li>Define capital-at-risk per trade first; entries come later.</li>
-        <li>Partial booking around 1–1.5R helps stabilize equity curve and emotions.</li>
-        <li>Swing risk must factor in gaps, overnight news and event calendars.</li>
-        <li>Every exit is feedback – review calmly and upgrade your next decision.</li>
-      </ul>
-    `;
-  }
+<div class="sectionTitle">STWP Risk Notes</div>
+<ul class="compact">
+<li>Define capital-at-risk per trade first; entries come later.</li>
+<li>Partial booking around 1–1.5R helps stabilize equity curve and emotions.</li>
+<li>Swing risk must factor in gaps, overnight news and event calendars.</li>
+<li>Every exit is feedback – review calmly and upgrade your next decision.</li>
+</ul>
+`;
+}
 
-  /* Modal */
-  function openStockModal(row){
-    modalSymbol.textContent = row.symbol;
-    const sentiment = detectSentiment(row);
-    const trend     = detectTrend(row);
-    const lvIntra   = computeIntradayLevels(row);
-    const lvSwing   = computeSwingLevels(row);
-    const rsiNote   = classifyRSI(row.rsi);
-    const volNote   = classifyVolume(row.volX);
+/* Modal */
+function openStockModal(row){
+modalSymbol.textContent = row.symbol;
+const sentiment = detectSentiment(row);
+const trend     = detectTrend(row);
+const lvIntra   = computeIntradayLevels(row);
+const lvSwing   = computeSwingLevels(row);
+const rsiNote   = classifyRSI(row.rsi);
+const volNote   = classifyVolume(row.volX);
 
-    modalSubtitle.textContent = `${sentiment} • Trend: ${trend} • AI Score: ${row.score!=null?row.score:'/'} / 100`;
+modalSubtitle.textContent = `${sentiment} • Trend: ${trend} • AI Score: ${row.score!=null?row.score:'/'} / 100`;
 
-    modalBody.innerHTML = `
-      <div class="kpiGrid">
-        <div class="kpi"><b>Close</b><div class="val">${row.close!=null?nf2.format(row.close):'-'}</div></div>
-        <div class="kpi"><b>% Change</b><div class="val">${row.pct!=null?nf2.format(row.pct)+'%':'-'}</div></div>
-        <div class="kpi"><b>Vol X</b><div class="val">${row.volX!=null?nf2.format(row.volX):'-'}</div></div>
-        <div class="kpi"><b>RSI</b><div class="val">${row.rsi!=null?nf2.format(row.rsi):'-'}</div></div>
-        <div class="kpi"><b>Intraday Entry</b><div class="val">${lvIntra.entry?nf2.format(lvIntra.entry):'-'}</div></div>
-        <div class="kpi"><b>Intraday SL</b><div class="val">${lvIntra.sl?nf2.format(lvIntra.sl):'-'}</div></div>
-        <div class="kpi"><b>Swing Entry</b><div class="val">${lvSwing.entry?nf2.format(lvSwing.entry):'-'}</div></div>
-        <div class="kpi"><b>Swing SL</b><div class="val">${lvSwing.sl?nf2.format(lvSwing.sl):'-'}</div></div>
-      </div>
+modalBody.innerHTML = `
+<div class="kpiGrid">
+<div class="kpi"><b>Close</b><div class="val">${row.close!=null?nf2.format(row.close):'-'}</div></div>
+<div class="kpi"><b>% Change</b><div class="val">${row.pct!=null?nf2.format(row.pct)+'%':'-'}</div></div>
+<div class="kpi"><b>Vol X</b><div class="val">${row.volX!=null?nf2.format(row.volX):'-'}</div></div>
+<div class="kpi"><b>RSI</b><div class="val">${row.rsi!=null?nf2.format(row.rsi):'-'}</div></div>
+<div class="kpi"><b>Intraday Entry</b><div class="val">${lvIntra.entry?nf2.format(lvIntra.entry):'-'}</div></div>
+<div class="kpi"><b>Intraday SL</b><div class="val">${lvIntra.sl?nf2.format(lvIntra.sl):'-'}</div></div>
+<div class="kpi"><b>Swing Entry</b><div class="val">${lvSwing.entry?nf2.format(lvSwing.entry):'-'}</div></div>
+<div class="kpi"><b>Swing SL</b><div class="val">${lvSwing.sl?nf2.format(lvSwing.sl):'-'}</div></div>
+</div>
 
-      <div class="sectionTitle">Quick View</div>
-      <ul class="compact">
-        <li>Sentiment: <b>${sentiment}</b> | Trend: <b>${trend}</b></li>
-        <li>RSI: <b>${row.rsi!=null?nf2.format(row.rsi):'NA'}</b> (${rsiNote})</li>
-        <li>Volume profile: <b>${volNote}</b> (Vol X: ${row.volX!=null?nf2.format(row.volX):'NA'})</li>
-      </ul>
-    `;
+<div class="sectionTitle">Quick View</div>
+<ul class="compact">
+<li>Sentiment: <b>${sentiment}</b> | Trend: <b>${trend}</b></li>
+<li>RSI: <b>${row.rsi!=null?nf2.format(row.rsi):'NA'}</b> (${rsiNote})</li>
+<li>Volume profile: <b>${volNote}</b> (Vol X: ${row.volX!=null?nf2.format(row.volX):'NA'})</li>
+</ul>
+`;
 
-    modalBackdrop.style.display='flex';
-  }
+modalBackdrop.style.display='flex';
+}
 
-  modalClose.addEventListener('click',()=> modalBackdrop.style.display='none');
-  modalBackdrop.addEventListener('click',(e)=>{
-    if(e.target===modalBackdrop) modalBackdrop.style.display='none';
-  });
+modalClose.addEventListener('click',()=> modalBackdrop.style.display='none');
+modalBackdrop.addEventListener('click',(e)=>{
+if(e.target===modalBackdrop) modalBackdrop.style.display='none';
+});
 
-  /* Watchlist & post copy */
-  function persistWatchlist(){
-    localStorage.setItem('stwp_watchlist_eq', JSON.stringify(Array.from(watchlist)));
-  }
+/* Watchlist & post copy */
+function persistWatchlist(){
+localStorage.setItem('stwp_watchlist_eq', JSON.stringify(Array.from(watchlist)));
+}
 
-  function updateWatchButton(){
-    if(!selectedRow){
-      btnToggleWatch.textContent='Add to Watchlist';
-      return;
-    }
-    const sym = selectedRow.symbol.toUpperCase();
-    btnToggleWatch.textContent = watchlist.has(sym)?'Remove from Watchlist':'Add to Watchlist';
-  }
+function updateWatchButton(){
+if(!selectedRow){
+btnToggleWatch.textContent='Add to Watchlist';
+return;
+}
+const sym = selectedRow.symbol.toUpperCase();
+btnToggleWatch.textContent = watchlist.has(sym)?'Remove from Watchlist':'Add to Watchlist';
+}
 
-  btnToggleWatch.addEventListener('click',()=>{
-    if(!selectedRow) return;
-    const sym = selectedRow.symbol.toUpperCase();
-    if(watchlist.has(sym)){
-      watchlist.delete(sym);
-      showToast('Removed from watchlist');
-    }else{
-      watchlist.add(sym);
-      showToast('Added to watchlist');
-    }
-    persistWatchlist();
-    updateWatchButton();
-    renderTable();
-  });
+btnToggleWatch.addEventListener('click',()=>{
+if(!selectedRow) return;
+const sym = selectedRow.symbol.toUpperCase();
+if(watchlist.has(sym)){
+watchlist.delete(sym);
+showToast('Removed from watchlist');
+}else{
+watchlist.add(sym);
+showToast('Added to watchlist');
+}
+persistWatchlist();
+updateWatchButton();
+renderTable();
+});
 
-  btnCopyPost.addEventListener('click',()=>{
-    if(!selectedRow){
-      showToast('Select a stock first');
-      return;
-    }
-    const txt = buildStwpPost(selectedRow);
-    navigator.clipboard.writeText(txt).then(()=> showToast('STWP post copied'));
-  });
+btnCopyPost.addEventListener('click',()=>{
+if(!selectedRow){
+showToast('Select a stock first');
+return;
+}
+const txt = buildStwpPost(selectedRow);
+navigator.clipboard.writeText(txt).then(()=> showToast('STWP post copied'));
+});
 
-  function buildStwpPost(row){
-    const sentiment = detectSentiment(row);
-    const trend     = detectTrend(row);
-    const lvIntra   = computeIntradayLevels(row);
-    const lvSwing   = computeSwingLevels(row);
-    const rsiNote   = classifyRSI(row.rsi);
-    const volNote   = classifyVolume(row.volX);
-    const strength  = computeStrength(row);
-    const score     = row.score ?? 0;
-    const outlook   = getOutlook(row); // Momentum / Trend / Risk / Volume
+function buildStwpPost(row){
+const sentiment = detectSentiment(row);
+const trend     = detectTrend(row);
+const lvIntra   = computeIntradayLevels(row);
+const lvSwing   = computeSwingLevels(row);
+const rsiNote   = classifyRSI(row.rsi);
+const volNote   = classifyVolume(row.volX);
+const strength  = computeStrength(row);
+const score     = row.score ?? 0;
+const outlook   = getOutlook(row); // Momentum / Trend / Risk / Volume
 
-    return [
-      `STWP Equity Snapshot – ${row.symbol}`,
-      ``,
-      `Intraday Setup:`,
-      `Entry: ${lvIntra.entry?nf2.format(lvIntra.entry):'-'}`,
-      `Stop Loss: ${lvIntra.sl?nf2.format(lvIntra.sl):'-'}`,
-      `Target 1: ${lvIntra.t1?nf2.format(lvIntra.t1):'-'}`,
-      `Target 2: ${lvIntra.t2?nf2.format(lvIntra.t2):'-'}`,
-      ``,
-      `Swing Setup (Hybrid Model – 2–5 days):`,
-      `Entry: ${lvSwing.entry?nf2.format(lvSwing.entry):'-'}`,
-      `Stop Loss: ${lvSwing.sl?nf2.format(lvSwing.sl):'-'}`,
-      `Target 1: ${lvSwing.t1?nf2.format(lvSwing.t1):'-'}`,
-      `Target 2: ${lvSwing.t2?nf2.format(lvSwing.t2):'-'}`,
-      ``,
-      `STWP View:`,
-      `• Sentiment: ${sentiment}, Trend: ${trend}`,
-      `• RSI: ${row.rsi!=null?nf2.format(row.rsi):'NA'} (${rsiNote})`,
-      `• Volume: ${volNote}, Vol X: ${row.volX!=null?nf2.format(row.volX):'NA'}`,
-      `• % Change: ${row.pct!=null?nf2.format(row.pct)+'%':'NA'}`,
-      `• AI Score: ${score}/100, Strength: ${strength.toFixed(1)}/5`,
-      ``,
-      `Final Outlook`,
-      `Momentum: ${outlook.momentum}`,
-      `Trend: ${outlook.trend}`,
-      `Risk: ${outlook.risk}`,
-      `Volume: ${outlook.volume}`,
-      ``,
-      `Learning Note: Focus on structure, risk per trade and clean reviews – not prediction.`,
-      ``,
-      `Disclaimer: Educational view only. Not a recommendation. Please consult a SEBI-registered advisor before making any decision.`
-    ].join('\n');
-  }
+return [
+`STWP Equity Snapshot – ${row.symbol}`,
+``,
+`Intraday Setup:`,
+`Entry: ${lvIntra.entry?nf2.format(lvIntra.entry):'-'}`,
+`Stop Loss: ${lvIntra.sl?nf2.format(lvIntra.sl):'-'}`,
+`Target 1: ${lvIntra.t1?nf2.format(lvIntra.t1):'-'}`,
+`Target 2: ${lvIntra.t2?nf2.format(lvIntra.t2):'-'}`,
+``,
+`Swing Setup (Hybrid Model – 2–5 days):`,
+`Entry: ${lvSwing.entry?nf2.format(lvSwing.entry):'-'}`,
+`Stop Loss: ${lvSwing.sl?nf2.format(lvSwing.sl):'-'}`,
+`Target 1: ${lvSwing.t1?nf2.format(lvSwing.t1):'-'}`,
+`Target 2: ${lvSwing.t2?nf2.format(lvSwing.t2):'-'}`,
+``,
+`STWP View:`,
+`• Sentiment: ${sentiment}, Trend: ${trend}`,
+`• RSI: ${row.rsi!=null?nf2.format(row.rsi):'NA'} (${rsiNote})`,
+`• Volume: ${volNote}, Vol X: ${row.volX!=null?nf2.format(row.volX):'NA'}`,
+`• % Change: ${row.pct!=null?nf2.format(row.pct)+'%':'NA'}`,
+`• AI Score: ${score}/100, Strength: ${strength.toFixed(1)}/5`,
+``,
+`Final Outlook`,
+`Momentum: ${outlook.momentum}`,
+`Trend: ${outlook.trend}`,
+`Risk: ${outlook.risk}`,
+`Volume: ${outlook.volume}`,
+``,
+`Learning Note: Focus on structure, risk per trade and clean reviews – not prediction.`,
+``,
+`Disclaimer: Educational view only. Not a recommendation. Please consult a SEBI-registered advisor before making any decision.`
+].join('\n');
+}
 
-  /* Demo + Reset */
-  btnDemo.addEventListener('click',()=>{
-    const demo = [
-      { Symbol:'TCS', Close:3850, '% change':1.2, 'Vol x':0.8, RSI:54, MACD:0.3, CCI:45, Stochastic:70, Entry:3900, 'Stop Loss':3780, PotentialPL:36000, Sector:'IT' },
-      { Symbol:'RELIANCE', Close:2940, '% change':2.8, 'Vol x':1.3, RSI:62, MACD:0.7, CCI:120, Stochastic:65, Entry:2970, 'Stop Loss':2880, PotentialPL:22500, Sector:'Energy' },
-      { Symbol:'INFY', Close:1580, '% change':-0.6, 'Vol x':0.4, RSI:35, MACD:-0.2, CCI:-130, Stochastic:30, Entry:1605, 'Stop Loss':1540, PotentialPL:15000, Sector:'IT' },
-      { Symbol:'HDFCBANK', Close:1650, '% change':5.6, 'Vol x':1.6, RSI:72, MACD:0.9, CCI:160, Stochastic:80, Entry:1670, 'Stop Loss':1600, PotentialPL:25000, Sector:'Banking' }
-    ];
-    processData(demo);
-  });
+/* Demo + Reset */
+btnDemo.addEventListener('click',()=>{
+const demo = [
+{ Symbol:'TCS', Close:3850, '% change':1.2, 'Vol x':0.8, RSI:54, MACD:0.3, CCI:45, Stochastic:70, Entry:3900, 'Stop Loss':3780, PotentialPL:36000, Sector:'IT' },
+{ Symbol:'RELIANCE', Close:2940, '% change':2.8, 'Vol x':1.3, RSI:62, MACD:0.7, CCI:120, Stochastic:65, Entry:2970, 'Stop Loss':2880, PotentialPL:22500, Sector:'Energy' },
+{ Symbol:'INFY', Close:1580, '% change':-0.6, 'Vol x':0.4, RSI:35, MACD:-0.2, CCI:-130, Stochastic:30, Entry:1605, 'Stop Loss':1540, PotentialPL:15000, Sector:'IT' },
+{ Symbol:'HDFCBANK', Close:1650, '% change':5.6, 'Vol x':1.6, RSI:72, MACD:0.9, CCI:160, Stochastic:80, Entry:1670, 'Stop Loss':1600, PotentialPL:25000, Sector:'Banking' }
+];
+processData(demo);
+});
 
-  btnReset.addEventListener('click',()=>{
-    allRows=[];
-    viewRows=[];
-    stockHeader.innerHTML='';
-    stockBody.innerHTML='';
-    stockCount.textContent='No data loaded.';
-    selectedRow=null;
-    diagnosticBar.textContent='Load a file and click any stock to view STWP mapping.';
-    selectedLabel.textContent='No stock selected.';
-    document.getElementById('intradayTab').innerHTML='';
-    document.getElementById('swingTab').innerHTML='';
-    document.getElementById('momentumTab').innerHTML='';
-    document.getElementById('strategyTab').innerHTML='';
-    document.getElementById('riskTab').innerHTML='';
-    searchInput.value='';
-    strengthFilter.value='all';
-    currentSort=[];
-    updateSortIndicators();
-    showToast('Reset done');
-  });
+btnReset.addEventListener('click',()=>{
+allRows=[];
+viewRows=[];
+stockHeader.innerHTML='';
+stockBody.innerHTML='';
+stockCount.textContent='No data loaded.';
+selectedRow=null;
+diagnosticBar.textContent='Load a file and click any stock to view STWP mapping.';
+selectedLabel.textContent='No stock selected.';
+document.getElementById('intradayTab').innerHTML='';
+document.getElementById('swingTab').innerHTML='';
+document.getElementById('momentumTab').innerHTML='';
+document.getElementById('strategyTab').innerHTML='';
+document.getElementById('riskTab').innerHTML='';
+searchInput.value='';
+strengthFilter.value='all';
+currentSort=[];
+updateSortIndicators();
+showToast('Reset done');
+});
 
-  /* Toast */
-  function showToast(msg){
-    toast.textContent=msg;
-    toast.style.display='block';
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(()=> toast.style.display='none',2000);
-  }
+/* Toast */
+function showToast(msg){
+toast.textContent=msg;
+toast.style.display='block';
+clearTimeout(showToast._t);
+showToast._t = setTimeout(()=> toast.style.display='none',2000);
+}
 
 })();
 </script>
 
 </body>
 </html>
+
 
